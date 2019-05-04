@@ -1,6 +1,6 @@
 #include "Queen.h"
 
-Queen::Queen(bool white, Field position, Checkboard *checkboard): Figure(white, position, checkboard) {
+Queen::Queen(bool white, Field position, Checkboard *checkboard) : Figure(white, position, checkboard) {
 
 }
 

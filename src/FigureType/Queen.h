@@ -6,11 +6,11 @@
 #include "../Checkboard.h"
 
 /**
- * @brief Třída reprezentující dámu.
+ * @brief Třída reprezentující dámu
  */
-class Queen: public Figure {
+class Queen : public Figure {
 public:
-    Queen (bool white, Field position, Checkboard *checkboard);
+    Queen(bool white, Field position, Checkboard *checkboard);
 
     bool isMovePossible(Field field);
 };

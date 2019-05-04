@@ -8,9 +8,9 @@
 /**
  * @brief Třída reprezentující krále.
  */
-class King: public Figure {
+class King : public Figure {
 public:
-    King (bool white, Field position, Checkboard *checkboard);
+    King(bool white, Field position, Checkboard *checkboard);
 
     bool isMovePossible(Field field);
 };
