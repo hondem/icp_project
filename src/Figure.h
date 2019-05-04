@@ -2,7 +2,13 @@
 #define CPPPROJECT_FIGURE_H
 
 #include "Field.h"
+#include "Checkboard.h"
 
+class Checkboard;
+
+/**
+ * @brief Třída, jejíž instance reprezentují jednotlivé šachové figurky.
+ */
 class Figure {
 private:
     /**
@@ -16,13 +22,19 @@ protected:
      */
     bool whiteColor;
 
+    /**
+     * @brief Ukazatel na šachovnici, na které je daná figurka.
+     */
+    Checkboard *checkboard;
+
 public:
     /**
      * @brief Konstruktor figurky
      * @param white True pokud je nová figurka bílá, False pokud černá
      * @param position Počáteční pozice figurky
+     * @param checkboard Ukazatel na šachovnici, na které bude figurka umístěna.
      */
-    Figure(bool white, Field position);
+    Figure(bool white, Field position, Checkboard *checkboard);
 
     /**
      * @brief Vrací barvu figurky.

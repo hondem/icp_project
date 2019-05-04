@@ -1,9 +1,10 @@
 #include "Figure.h"
 
 
-Figure::Figure(bool white, Field position) {
+Figure::Figure(bool white, Field position, Checkboard *checkboard) {
     this->whiteColor = white;
     this->position = position;
+    this->checkboard = checkboard;
 }
 
 bool Figure::isWhite() {
