@@ -5,5 +5,7 @@ Pawn::Pawn(bool white, Field position, Checkboard *checkboard) : Figure(white, p
 }
 
 bool Pawn::isMovePossible(Field field) {
+    (void) field;
+
     return false;
 }

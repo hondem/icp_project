@@ -5,5 +5,7 @@ Rook::Rook(bool white, Field position, Checkboard *checkboard) : Figure(white, p
 }
 
 bool Rook::isMovePossible(Field field) {
+    (void) field;
+
     return false;
 }

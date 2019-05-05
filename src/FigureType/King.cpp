@@ -5,5 +5,7 @@ King::King(bool white, Field position, Checkboard *checkboard) : Figure(white, p
 }
 
 bool King::isMovePossible(Field field) {
+    (void) field;
+
     return false;
 }

@@ -5,5 +5,7 @@ Queen::Queen(bool white, Field position, Checkboard *checkboard) : Figure(white,
 }
 
 bool Queen::isMovePossible(Field field) {
+    (void) field;
+
     return false;
 }

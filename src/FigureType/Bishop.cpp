@@ -5,5 +5,6 @@ Bishop::Bishop(bool white, Field position, Checkboard *checkboard) : Figure(whit
 }
 
 bool Bishop::isMovePossible(Field field) {
+    (void) field;
     return false;
 }

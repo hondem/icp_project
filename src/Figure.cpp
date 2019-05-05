@@ -12,5 +12,7 @@ bool Figure::isWhite() {
 }
 
 bool Figure::isMovePossible(Field field) {
+    (void) field;
+
     return false;
 };

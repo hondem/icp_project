@@ -5,5 +5,7 @@ Knight::Knight(bool white, Field position, Checkboard *checkboard) : Figure(whit
 }
 
 bool Knight::isMovePossible(Field field) {
+    (void) field;
+
     return false;
 }
