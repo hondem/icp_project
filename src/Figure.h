@@ -16,11 +16,12 @@ private:
      */
     Field position;
 
-protected:
     /**
      * @brief True pokud je figurka bílá.
      */
     bool whiteColor;
+
+protected:
 
     /**
      * @brief Ukazatel na šachovnici, na které je daná figurka.
@@ -41,6 +42,12 @@ public:
      * @return True, pokud je barva bílá.
      */
     bool isWhite();
+
+    /**
+     * @brief Vrací pozici figurky
+     * @return
+     */
+    Field getPosition();
 
     /**
      * Abstraktní metoda

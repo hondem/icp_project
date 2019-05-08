@@ -11,6 +11,10 @@ bool Figure::isWhite() {
     return this->whiteColor;
 }
 
+Field Figure::getPosition() {
+    return this->position;
+}
+
 bool Figure::isMovePossible(Field field) {
     (void) field;
 
