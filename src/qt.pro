@@ -14,6 +14,8 @@ SOURCES += \
     FigureType/Pawn.cpp \
     FigureType/Queen.cpp \
     FigureType/Rook.cpp \
+    Utils/Parser.cpp \
 
 HEADERS += \
-    Field.h
+    Field.h \
+    Utils/MoveRecord.h \

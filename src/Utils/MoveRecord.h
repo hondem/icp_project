@@ -1,12 +1,10 @@
-# ICP Project 2019
-## MiniDoc
-### Parser
-#### Example usage
-```cpp
-map<int, MoveRecord*> parsedMoves = Parser::LoadFile("../tests/3.src");
-```
-#### MoveRecord structure
-```cpp
+#ifndef MOVERECORD_HEADER
+#define MOVERECORD_HEADER
+
+#include <string>
+
+using namespace std;
+
 struct MoveRecord{
     /**
      * To detect which player's move is it
@@ -38,9 +36,5 @@ struct MoveRecord{
      */
     char flag;
 };
-```
 
-
-## Contributors  
-**Martin Buchta** - <xbucht28@stud.fit.vutbr.cz>  
-**Jan Demel** - <xdemel01@stud.fit.vutbr.cz>
+#endif
