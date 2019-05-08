@@ -2,3 +2,5 @@
 CMakeLists.txt
 chess
 cmake-build-debug/
+*.app
+.vscode/
