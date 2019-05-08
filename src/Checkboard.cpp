@@ -82,3 +82,10 @@ void Checkboard::addQueen(Field position, bool white) {
 void Checkboard::addRook(Field position, bool white) {
     this->fields[position.y][position.x] = new Rook(white, position, this);
 }
+
+Field Checkboard::convertCoordsToField(std::string coords){
+    return (Field){
+        (int)coords[0] - 'a',
+        (int)coords[1] - '0' - 1
+    };
+}

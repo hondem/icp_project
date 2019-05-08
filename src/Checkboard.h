@@ -3,6 +3,7 @@
 
 #include "Figure.h"
 #include "Field.h"
+#include <string>
 
 #define CHECKBOARD_LENGTH 8
 
@@ -81,6 +82,13 @@ public:
      * @param figure Ukazatel na figurku
      */
     void setFieldFigure(Field position, Figure *figure);
+
+    /**
+     * Converts 'c2' to (Field){2,1}
+     * @param coords String with coordinations
+     * @return Converted coords to Field
+     */
+    static Field convertCoordsToField(std::string coords);
 };
 
 
