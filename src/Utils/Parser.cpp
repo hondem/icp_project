@@ -19,9 +19,9 @@ map<int, MoveRecord*> Parser::LoadFile(string filePath) {
 
     for (string line : loadedFile) {
         // Let's find out, if given line might be a valid line
-        if (IsValidChessLine(line)) {
+        if (Parser::IsValidChessLine(line)) {
 
-            int lineIndex = GetLineIndex(line) - 1;
+            int lineIndex = Parser::GetLineIndex(line) - 1;
 
             // If there is already something stored on position, where the string belongs to... ERROR!!!
             try {
