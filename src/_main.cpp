@@ -7,7 +7,7 @@
 int main(int argc, char *argv[]) {
     std::cout << "Cus\n";
 
-    map<int, MoveRecord*> parsedMoves = Parser::LoadFile("../tests/3.src");
+    GameEngine *engine = new GameEngine("../tests/3.src");
 
     QApplication app(argc, argv);
     QPushButton qPushButton("Hello Qt");
