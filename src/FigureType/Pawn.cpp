@@ -70,7 +70,8 @@ bool Pawn::isMovePossible(Field field) {
         this->getPosition().x == field.x &&
         this->getPosition().y == 1 &&
         field.y == 3 &&
-        this->checkboard->getFieldFigure(field) == nullptr
+        this->checkboard->getFieldFigure(field) == nullptr &&
+        this->checkboard->getFieldFigure((Field){field.x, field.y - 1}) == nullptr
     ){
         return true;
     }
@@ -83,7 +84,8 @@ bool Pawn::isMovePossible(Field field) {
         this->getPosition().x == field.x &&
         this->getPosition().y == 6 &&
         field.y == 4 &&
-        this->checkboard->getFieldFigure(field) == nullptr
+        this->checkboard->getFieldFigure(field) == nullptr &&
+        this->checkboard->getFieldFigure((Field){field.x, field.y + 1}) == nullptr
     ){
         return true;
     }
