@@ -7,7 +7,7 @@
 class GField : public QGraphicsRectItem {
     QGraphicsItem *parent;
 public:
-    GField(QGraphicsItem *parent);
+    GField(QGraphicsItem *parent, bool light);
 };
 
 
