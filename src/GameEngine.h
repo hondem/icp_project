@@ -17,12 +17,12 @@ private:
      */
     map<int, MoveRecord*> gameSteps;
 
+public:
     /**
      * An instance of checkboard
      */
     Checkboard *gameCheckboard;
 
-public:
     /**
      * Main constructor of GameEngine
      * @param inputFile File to read annotation from

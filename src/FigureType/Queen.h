@@ -13,6 +13,8 @@ public:
     Queen(bool white, Field position, Checkboard *checkboard);
 
     bool isMovePossible(Field field);
+
+    char *getFigureImage();
 };
 
 

@@ -18,6 +18,7 @@ SOURCES += \
     Gui/Window.cpp \
     Gui/GBoard.cpp \
     Gui/GField.cpp \
+    Gui/GFigure.cpp \
 
 HEADERS += \
     Field.h \
@@ -25,3 +26,4 @@ HEADERS += \
     Gui/Window.h \
     Gui/GBoard.h \
     Gui/GField.h \
+    Gui/GFigure.h \

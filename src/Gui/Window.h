@@ -3,14 +3,25 @@
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
+#include "../GameEngine.h"
 
-
+/**
+ * @brief Represents one window of the app's GUI.
+ */
 class Window {
-QGraphicsScene *scene;
-QGraphicsView *view;
+    /**
+     * @brief Scene of the GUI
+     */
+    QGraphicsScene *scene;
 
 public:
-    int run(int argc, char *argv[]);
+    /**
+     * @brief Runs the app's GUI.
+     * @param argc Argument count.
+     * @param argv Arguments
+     * @return Return code of the program.
+     */
+    int run(int argc, char *argv[], GameEngine *gameEngine);
 };
 
 

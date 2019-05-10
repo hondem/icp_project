@@ -57,6 +57,8 @@ public:
      * @return bool Vrací true, pokud figurka může provést tah.
      */
     virtual bool isMovePossible(Field field);
+
+    char figureImg[200];
 };
 
 

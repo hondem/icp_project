@@ -4,13 +4,21 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsScene>
 #include "GField.h"
+#include "../GameEngine.h"
 
 class GBoard : public QGraphicsRectItem {
     GField *fields[8][8];
     QGraphicsScene *scene;
 
+    /**
+     * @brief Game engine of the Game
+     */
+    GameEngine *gameEngine;
+
+    void renderFigures();
+
 public:
-    GBoard(QGraphicsScene *scene);
+    GBoard(QGraphicsScene *scene, GameEngine *gameEngine);
 };
 
 

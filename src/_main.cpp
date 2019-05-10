@@ -12,5 +12,5 @@ int main(int argc, char *argv[]) {
 
     Window *window = new Window();
 
-    return window->run(argc, argv);
+    return window->run(argc, argv, engine);
 }
