@@ -15,7 +15,13 @@ SOURCES += \
     FigureType/Queen.cpp \
     FigureType/Rook.cpp \
     Utils/Parser.cpp \
+    Gui/Window.cpp \
+    Gui/GBoard.cpp \
+    Gui/GField.cpp \
 
 HEADERS += \
     Field.h \
     Utils/MoveRecord.h \
+    Gui/Window.h \
+    Gui/GBoard.h \
+    Gui/GField.h \
