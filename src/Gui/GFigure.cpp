@@ -3,8 +3,8 @@
 
 GFigure::GFigure(Figure *figure) : QGraphicsPixmapItem() {
     char *img = figure->figureImg;
-    char imgAbs[200] = __BASE_FILE__;
-
+    char imgAbs[200] = "/home/martinbuchta/Dokumenty/cppProject/src/Images/";
+/*
     for (int i = 199; i > 0; i--) {
         if (imgAbs[i] != '\0') {
             if (imgAbs[i] == '/') {
@@ -13,9 +13,9 @@ GFigure::GFigure(Figure *figure) : QGraphicsPixmapItem() {
                 imgAbs[i] = '\0';
             }
         }
-    }
+    }*/
 
-    strcat(imgAbs, "../Images/");
+    //strcat(imgAbs, "../Images/");
     strcat(imgAbs, img);
     setPixmap(QPixmap(imgAbs));
     int x = figure->getPosition().x * 100;
