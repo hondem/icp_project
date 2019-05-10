@@ -2,13 +2,27 @@
 #include <Qt>
 #include <QtGui/QBrush>
 #include <QtGui/QPen>
+#include <iostream>
 
-
-GField::GField(QGraphicsItem *parent, bool light) {
+GField::GField(QGraphicsItem *parent, int x, int y) {
     this->parent = parent;
+    this->xPos = x;
+    this->yPos = y;
 
     QBrush brush;
     QColor color;
+
+    bool light = false;
+
+    if (y % 2 == 0) {
+        if (x % 2 == 1) {
+            light = true;
+        }
+    } else {
+        if (x % 2 == 0) {
+            light = true;
+        }
+    }
 
     if (!light) {
         color.setRed(255);
@@ -30,3 +44,8 @@ GField::GField(QGraphicsItem *parent, bool light) {
 
     setRect(0, 0, 100, 100);
 }
+
+void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    std::cout << "Click at " + std::to_string(xPos) + ":" + std::to_string(yPos) + "\n";
+}
+

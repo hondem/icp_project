@@ -5,9 +5,12 @@
 #include <QGraphicsItem>
 
 class GField : public QGraphicsRectItem {
+    int xPos;
+    int yPos;
     QGraphicsItem *parent;
 public:
-    GField(QGraphicsItem *parent, bool light);
+    GField(QGraphicsItem *parent, int x, int y);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
 };
 
 
