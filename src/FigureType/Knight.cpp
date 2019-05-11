@@ -3,7 +3,11 @@
 
 
 Knight::Knight(bool white, Field position, Checkboard *checkboard) : Figure(white, position, checkboard) {
-    strcpy(this->figureImg, "Chess_nlt45.png");
+    if (white) {
+        strcpy(this->figureImg, "Chess_nlt45.png");
+    } else {
+        strcpy(this->figureImg, "Chess_ndt45.png");
+    }
 }
 
 bool Knight::isMovePossible(Field field) {
