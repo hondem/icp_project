@@ -7,6 +7,7 @@
 
 
 GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
+    this->selected = nullptr;
     this->scene = scene;
     this->gameEngine = gameEngine;
 
@@ -14,7 +15,7 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
 
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
-            fields[y][x] = new GField(this, x, y);
+            fields[y][x] = new GField(this, x, y, this);
         }
     }
 
@@ -34,4 +35,19 @@ void GBoard::renderFigures() {
         }
     }
 
+}
+
+void GBoard::showAvailableFields(GField *source) {
+    Figure *figure = this->gameEngine->getCheckboard()->getFieldFigure({source->xPos, source->yPos});
+
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            if (figure->isMovePossible({x, y})) {
+                std::cout << "Available " << x << ":" << y << "\n";
+                this->fields[y][x]->styleAvailable();
+            } else {
+                this->fields[y][x]->styleNotAvailable();
+            }
+        }
+    }
 }

@@ -7,9 +7,15 @@
 #include "../GameEngine.h"
 
 class GBoard : public QGraphicsRectItem {
+public:
     GField *fields[8][8];
+
     QGraphicsScene *scene;
 
+    /**
+     * @brief Current selected field with the figure, that is moved with.
+     */
+    GField *selected;
     /**
      * @brief Game engine of the Game
      */
@@ -17,8 +23,9 @@ class GBoard : public QGraphicsRectItem {
 
     void renderFigures();
 
-public:
     GBoard(QGraphicsScene *scene, GameEngine *gameEngine);
+
+    void showAvailableFields(GField *source);
 };
 
 
