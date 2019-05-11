@@ -125,3 +125,7 @@ void GameEngine::moveFigure(Figure *figure, Field target) {
 map<int, MoveRecord*> GameEngine::getGameSteps() {
     return this->gameSteps;
 }
+
+int GameEngine::getCurrentStep() {
+    return this->currentMove;
+}

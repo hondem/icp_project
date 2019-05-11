@@ -129,6 +129,9 @@ void GBoard::refresh() {
         this->moveList->items.push_back(item);
         this->moveList->addItem(*item);
     }
+
+    // select current step
+    this->moveList->setCurrentRow(this->gameEngine->getCurrentStep());
 }
 
 void GBoard::redoBtnClick() {

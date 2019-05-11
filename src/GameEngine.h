@@ -86,6 +86,12 @@ public:
      * @return map<int, MoveRecord*> gameSteps
      */
     map<int, MoveRecord*> getGameSteps();
+
+    /**
+     * @brief Returns current move index
+     * @return int Current move index
+     */
+    int getCurrentStep();
 };
 
 
