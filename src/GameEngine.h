@@ -21,6 +21,24 @@ private:
      * An instance of checkboard
      */
     Checkboard *gameCheckboard;
+
+    /**
+     * Current move index
+     */
+    int currentMove;
+
+    /**
+     * Finds figure that should do this move
+     * @return Figure / nullptr
+     */
+    Figure *findFigure(MoveRecord* currentMove);
+
+    /**
+     * Translates type of figure to internal representation
+     * @param figure
+     * @return String of converted figure
+     */
+    string translateTypeOfFigure(Figure *figure);
 public:
 
     /**
@@ -28,16 +46,6 @@ public:
      * @param inputFile File to read annotation from
      */
     GameEngine(string inputFile);
-
-    /**
-     * Start evaluating steps
-     */
-    void start();
-
-    /**
-     * Pause evaluating steps
-     */
-    void pause();
 
     /**
      * Go step backwards
