@@ -7,6 +7,7 @@
 
 
 GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
+    this->whiteOnMove = true;
     this->selected = nullptr;
     this->scene = scene;
     this->gameEngine = gameEngine;
@@ -26,7 +27,6 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
 void GBoard::renderFigures() {
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
-            //scene->addItem(fields[y][x]);
             Figure *figure = gameEngine->getCheckboard()->getFieldFigure({.x = x, .y = y});
 
             if (figure != nullptr) {

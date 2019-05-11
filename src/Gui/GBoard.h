@@ -10,6 +10,11 @@
 
 class GBoard : public QGraphicsRectItem {
 public:
+
+    /**
+     * @brief true if the next move is white's, false otherwise
+     */
+    bool whiteOnMove;
     GField *fields[8][8];
 
     QGraphicsScene *scene;
