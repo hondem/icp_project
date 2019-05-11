@@ -11,7 +11,11 @@ Knight::Knight(bool white, Field position, Checkboard *checkboard) : Figure(whit
 }
 
 bool Knight::isMovePossible(Field field) {
-    (void) field;
+    if(this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()) return false;
+
+    Field resField = field - this->getPosition();
+
+    if((abs(resField.x) == 2 && abs(resField.y) == 1) || (abs(resField.x) == 1 && abs(resField.y) == 2)) return true;
 
     return false;
 }
