@@ -2,6 +2,6 @@
 
 GFileOpenButton::GFileOpenButton() {
     setText("Load file");
-    setFixedSize(150, 50);
-    move(815, 700);
+    setFixedSize(150, 30);
+    move(815, 755);
 }

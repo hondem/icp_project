@@ -2,6 +2,6 @@
 
 GFileSaveAsButton::GFileSaveAsButton() {
     setText("Save as");
-    setFixedSize(150, 50);
-    move(980, 700);
+    setFixedSize(150, 30);
+    move(980, 755);
 }
