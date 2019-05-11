@@ -3,6 +3,7 @@
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
+#include <QTabWidget>
 #include "../GameEngine.h"
 
 /**
@@ -14,6 +15,16 @@ class Window {
      */
     QGraphicsScene *scene;
 
+    /**
+     * @brief QTabWidget Widget for tab management.
+     */
+    QTabWidget *tabWidget;
+
+    /**
+     * @brief Count of open tabs.
+     */
+    int tabs;
+
 public:
     /**
      * @brief Runs the app's GUI.
@@ -22,6 +33,11 @@ public:
      * @return Return code of the program.
      */
     int run(int argc, char *argv[], GameEngine *gameEngine);
+
+    /**
+     * @brief Creates new tab with new game.
+     */
+    void createTab();
 };
 
 
