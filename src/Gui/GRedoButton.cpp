@@ -5,6 +5,6 @@ GRedoButton::GRedoButton(GBoard *board) {
     this->board = board;
 
     this->setText(QString("Redo"));
-    this->move(930, 0);
-    this->setFixedSize(100, 50);
+    this->move(980, 0);
+    this->setFixedSize(150, 50);
 }

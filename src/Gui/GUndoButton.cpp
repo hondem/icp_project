@@ -5,5 +5,5 @@ GUndoButton::GUndoButton(GBoard *board) {
 
     this->setText(QString("Undo"));
     this->move(815, 0);
-    this->setFixedSize(100, 50);
+    this->setFixedSize(150, 50);
 }

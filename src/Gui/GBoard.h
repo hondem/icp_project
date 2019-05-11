@@ -11,6 +11,9 @@
 #include "GUndoButton.h"
 #include "GMoveList.h"
 #include <QObject>
+#include "GInterval.h"
+#include "GPlayButton.h"
+#include "GPauseButton.h"
 
 class GRedoButton;
 class GUndoButton;
@@ -32,6 +35,10 @@ public:
     GUndoButton *undoButton;
 
     GMoveList *moveList;
+
+    GInterval *intervalInput;
+    GPlayButton *playButton;
+    GPauseButton *pauseButton;
 
     /**
      * @brief Current selected field with the figure, that is moved with.
