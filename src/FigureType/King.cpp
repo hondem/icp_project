@@ -28,8 +28,8 @@ bool King::isMovePossible(Field field) {
 }
 
 bool King::checkIfFieldIsAttacked(Field field) {
-    for(int y = 0; y < 8; y++){
-        for(int x = 0; x < 8; x++){
+    for(int y = 0; y < CHECKBOARD_LENGTH; y++){
+        for(int x = 0; x < CHECKBOARD_LENGTH; x++){
             if(
                 this->checkboard->getFieldFigure((Field){x, y}) != nullptr &&
                 this->checkboard->getFieldFigure((Field){x, y})->isWhite() != this->isWhite() &&
