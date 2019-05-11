@@ -145,3 +145,11 @@ void GameEngine::exportGame(const char *filePath) {
     os << ss.str();
     os.close();
 }
+
+map<int, MoveRecord*> GameEngine::getGameSteps() {
+    return this->gameSteps;
+}
+
+int GameEngine::getCurrentStep() {
+    return this->currentMove;
+}

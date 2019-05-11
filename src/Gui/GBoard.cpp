@@ -9,6 +9,7 @@
 #include "GRedoButton.h"
 #include <QLabel>
 #include "GBoardAxis.h"
+#include "../Utils/MoveRecord.h"
 
 
 GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
@@ -64,6 +65,9 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
     fileSaveAsButton = new GFileSaveAsButton;
     scene->addWidget(fileSaveAsButton);
     connect(fileSaveAsButton, SIGNAL(released()), this, SLOT(fileSaveAsBtnClick()));
+
+    this->timer = new QTimer(this);
+    connect(this->timer, SIGNAL(timeout()), this, SLOT(onTimer()));
 }
 
 void GBoard::renderFigures() {
@@ -113,6 +117,21 @@ void GBoard::refresh() {
     this->figures.clear();
 
     renderFigures();
+
+    // remove steps from list
+    for (auto it : this->moveList->items) {
+        this->moveList->clear();
+    }
+
+    // write steps into list
+    for(const auto& it : this->gameEngine->getGameSteps()) {
+        QString *item = new QString(MoveRecord::toString(it.second).data());
+        this->moveList->items.push_back(item);
+        this->moveList->addItem(*item);
+    }
+
+    // select current step
+    this->moveList->setCurrentRow(this->gameEngine->getCurrentStep());
 }
 
 void GBoard::redoBtnClick() {
@@ -129,10 +148,14 @@ void GBoard::undoBtnClick() {
 
 void GBoard::playBtnClick() {
     std::cout << "Play\n";
+
+    this->timer->start(5000);
 }
 
 void GBoard::pauseBtnClick() {
     std::cout << "Pause\n";
+
+    this->timer->stop();
 }
 
 void GBoard::fileOpenBtnClick() {
@@ -158,4 +181,8 @@ void GBoard::fileSaveAsBtnClick() {
         std::cout << "save as: " << filename.toUtf8().constData() << "\n";
         this->gameEngine->exportGame(filename.toUtf8().constData());
     }
+}
+
+void GBoard::onTimer() {
+    this->redoBtnClick();
 }

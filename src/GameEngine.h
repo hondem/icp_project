@@ -88,6 +88,18 @@ public:
      * @return
      */
     void exportGame(const char *filePath);
+
+    /*
+     * @brief Returns game steps parsed from Parser
+     * @return map<int, MoveRecord*> gameSteps
+     */
+    map<int, MoveRecord*> getGameSteps();
+
+    /**
+     * @brief Returns current move index
+     * @return int Current move index
+     */
+    int getCurrentStep();
 };
 
 
