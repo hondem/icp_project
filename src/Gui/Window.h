@@ -4,12 +4,15 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QTabWidget>
+#include <QObject>
 #include "../GameEngine.h"
 
 /**
  * @brief Represents one window of the app's GUI.
  */
-class Window {
+class Window : public QObject {
+    Q_OBJECT
+
     /**
      * @brief Scene of the GUI
      */
@@ -38,6 +41,13 @@ public:
      * @brief Creates new tab with new game.
      */
     void createTab();
+
+public slots:
+    /**
+     * @brief Closes tab with the index
+     * @param index Index of the tab
+     */
+    void closeTab(int index);
 };
 
 

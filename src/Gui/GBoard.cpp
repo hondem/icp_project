@@ -25,7 +25,7 @@ void GBoard::renderFigures() {
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
             scene->addItem(fields[y][x]);
-            Figure *figure = gameEngine->gameCheckboard->getFieldFigure({.x = x, .y = y});
+            Figure *figure = gameEngine->getCheckboard()->getFieldFigure({.x = x, .y = y});
 
             if (figure != nullptr) {
                 GFigure *gFigure = new GFigure(figure);

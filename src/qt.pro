@@ -19,6 +19,7 @@ SOURCES += \
     Gui/GBoard.cpp \
     Gui/GField.cpp \
     Gui/GFigure.cpp \
+    Gui/GTabBtn.cpp \
 
 HEADERS += \
     Field.h \
@@ -27,5 +28,6 @@ HEADERS += \
     Gui/GBoard.h \
     Gui/GField.h \
     Gui/GFigure.h \
+    Gui/GTabBtn.h \
 
 RESOURCES = Images/sources.qrc

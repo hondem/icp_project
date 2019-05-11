@@ -55,7 +55,7 @@ int Window::run(int argc, char *argv[], GameEngine *gameEngine) {
 
     scene->addWidget(tabWidget);
 
-    //scene->addWidget(tabWidget);
+    connect(tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 
     view->show();
 
@@ -74,4 +74,9 @@ void Window::createTab() {
     QGraphicsView *widget1 = new QGraphicsView(chessScene1);
     tabWidget->addTab(widget1, QString(tabName));
     tabWidget->tabBar()->tabButton(0, QTabBar::LeftSide);
+}
+
+void Window::closeTab(int index) {
+    std::cout << "Close tab " << std::to_string(index) << "\n";
+    tabWidget->removeTab(index);
 }
