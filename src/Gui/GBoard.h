@@ -9,6 +9,7 @@
 #include "GFigure.h"
 #include "GRedoButton.h"
 #include "GUndoButton.h"
+#include "GMoveList.h"
 #include <QObject>
 
 class GRedoButton;
@@ -29,6 +30,8 @@ public:
 
     GRedoButton *redoButton;
     GUndoButton *undoButton;
+
+    GMoveList *moveList;
 
     /**
      * @brief Current selected field with the figure, that is moved with.

@@ -2,6 +2,7 @@
 #include "../GameEngine.h"
 
 #include <QGraphicsScene>
+#include "GMoveList.h"
 #include "../Figure.h"
 #include "GFigure.h"
 #include "GUndoButton.h"
@@ -32,6 +33,9 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
     redoButton = new GRedoButton(this);
     scene->addWidget(redoButton);
     connect(redoButton, SIGNAL(released()), this, SLOT(redoBtnClick()));
+
+    moveList = new GMoveList;
+    scene->addWidget(moveList);
 }
 
 void GBoard::renderFigures() {
