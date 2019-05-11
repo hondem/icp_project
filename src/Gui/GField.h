@@ -4,12 +4,19 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsItem>
 
+class GBoard;
+
 class GField : public QGraphicsRectItem {
     int xPos;
     int yPos;
     QGraphicsItem *parent;
+    GBoard *board;
+
+    void styleSelected();
+    void styleNotSelected();
+
 public:
-    GField(QGraphicsItem *parent, int x, int y);
+    GField(QGraphicsItem *parent, int x, int y, GBoard *board);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
 };
 
