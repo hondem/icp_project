@@ -42,7 +42,12 @@ private:
 public:
 
     /**
-     * Main constructor of GameEngine
+     * Default GameEngine constructor
+     */
+    GameEngine();
+
+    /**
+     * Main constructor of GameEngine with inputFile
      * @param inputFile File to read annotation from
      */
     GameEngine(string inputFile);

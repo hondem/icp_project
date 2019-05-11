@@ -11,6 +11,12 @@
 #include "FigureType/Queen.h"
 #include "FigureType/Rook.h"
 
+GameEngine::GameEngine() {
+    this->gameSteps = map<int, MoveRecord*>();
+    this->gameCheckboard = new Checkboard();
+    this->currentMove = -1;
+}
+
 GameEngine::GameEngine(string inputFile) {
     this->gameSteps = Parser::LoadFile(inputFile);
     this->gameCheckboard = new Checkboard();
@@ -18,11 +24,17 @@ GameEngine::GameEngine(string inputFile) {
 }
 
 void GameEngine::undo() {
-    this->setStep(--this->currentMove);
+    if(this->currentMove - 1 >= -1){
+        this->currentMove--;
+        this->setStep(this->currentMove);
+    }
 }
 
 void GameEngine::redo() {
-    this->setStep(++this->currentMove);
+    if(this->currentMove + 1 < this->gameSteps.size()){
+        this->currentMove++;
+        this->setStep(this->currentMove);
+    }
 }
 
 void GameEngine::setStep(int stepIndex) {
