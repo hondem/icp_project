@@ -143,6 +143,8 @@ void GBoard::fileOpenBtnClick() {
 
     if (false == filename.isNull()) {
         std::cout << "open: " << filename.toUtf8().constData() << "\n";
+        this->gameEngine = new GameEngine(filename.toStdString());
+        this->refresh();
     }
 }
 
