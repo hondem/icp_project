@@ -86,9 +86,11 @@ void GBoard::refresh() {
 void GBoard::redoBtnClick() {
     std::cout << "Redo\n";
     this->gameEngine->redo();
+    this->refresh();
 }
 
 void GBoard::undoBtnClick() {
     std::cout << "Undo\n";
     this->gameEngine->undo();
+    this->refresh();
 }
