@@ -17,3 +17,9 @@ Field Coords::convertCoordsToField(Coords coords){
         coords.y - 1
     };
 }
+
+std::string Coords::toString(Coords coords) {
+    char buffer[100];
+    sprintf(buffer, "%c%d", coords.x, coords.y);
+    return std::string(buffer);
+}
