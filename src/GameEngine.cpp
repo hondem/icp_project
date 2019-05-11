@@ -14,20 +14,19 @@
 GameEngine::GameEngine(string inputFile) {
     this->gameSteps = Parser::LoadFile(inputFile);
     this->gameCheckboard = new Checkboard();
-    this->currentMove = 0;
-
-    this->redo();
+    this->currentMove = -1;
 }
 
 void GameEngine::undo() {
-
+    this->setStep(--this->currentMove);
 }
 
 void GameEngine::redo() {
-
+    this->setStep(++this->currentMove);
 }
 
 void GameEngine::setStep(int stepIndex) {
+    printf("Step: %d\n", this->currentMove);
     this->gameCheckboard = new Checkboard();
     for(int i = 0; i <= stepIndex; i++){
 
@@ -36,7 +35,7 @@ void GameEngine::setStep(int stepIndex) {
         Field targetField = Field::convertCoordsStringToField(currentMoveRecord->target);
         Figure *targetFigure = this->findFigure(currentMoveRecord);
 
-        printf("Ahoooj\n");
+        this->moveFigure(targetFigure, targetField);
     }
 }
 
@@ -65,12 +64,17 @@ Figure* GameEngine::findFigure(MoveRecord* currentMove) {
     }
 
     Field targetField = Field::convertCoordsStringToField(currentMove->target);
-    string convertedTargetField = Coords::toString(Field::convertFieldToCoords(targetField));
 
     for(auto i = potentials.begin(); i != potentials.end(); i++){
+
+        string convertedFigureSource = Coords::toString(Field::convertFieldToCoords((*i)->getPosition()));
+
         if(!(
             (*i)->isMovePossible(targetField) &&
-            convertedTargetField.find(currentMove->source) != string::npos
+            (
+                convertedFigureSource.find(currentMove->source) != string::npos
+                //convertedTargetField.compare(currentMove->source) == 0
+            )
         )) potentials.erase(i--);
     }
 
@@ -95,6 +99,7 @@ string GameEngine::translateTypeOfFigure(Figure *figure){
 
 void GameEngine::moveFigure(Figure *figure, Field target) {
     if (false == figure->isMovePossible(target)) {
+        printf("THIS MOVE IS IMPOSSIBLE!\n");
         return;
     }
 
