@@ -64,6 +64,9 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
     fileSaveAsButton = new GFileSaveAsButton;
     scene->addWidget(fileSaveAsButton);
     connect(fileSaveAsButton, SIGNAL(released()), this, SLOT(fileSaveAsBtnClick()));
+
+    this->timer = new QTimer(this);
+    connect(this->timer, SIGNAL(timeout()), this, SLOT(onTimer()));
 }
 
 void GBoard::renderFigures() {
@@ -129,10 +132,14 @@ void GBoard::undoBtnClick() {
 
 void GBoard::playBtnClick() {
     std::cout << "Play\n";
+
+    this->timer->start(5000);
 }
 
 void GBoard::pauseBtnClick() {
     std::cout << "Pause\n";
+
+    this->timer->stop();
 }
 
 void GBoard::fileOpenBtnClick() {
@@ -157,4 +164,8 @@ void GBoard::fileSaveAsBtnClick() {
     if (false == filename.isNull()) {
         std::cout << "save as: " << filename.toUtf8().constData() << "\n";
     }
+}
+
+void GBoard::onTimer() {
+    this->redoBtnClick();
 }

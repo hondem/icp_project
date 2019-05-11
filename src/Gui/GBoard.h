@@ -18,6 +18,7 @@
 #include "GFileOpenButton.h"
 #include "GFileSaveAs.h"
 #include "GFileSaveAsButton.h"
+#include <QTimer>
 
 class GRedoButton;
 class GUndoButton;
@@ -47,6 +48,7 @@ public:
     GFileOpenButton *fileOpenButton;
     GFileSaveAs *fileSaveAs;
     GFileSaveAsButton *fileSaveAsButton;
+    QTimer *timer;
 
     /**
      * @brief Current selected field with the figure, that is moved with.
@@ -76,6 +78,7 @@ public slots:
     void pauseBtnClick();
     void fileOpenBtnClick();
     void fileSaveAsBtnClick();
+    void onTimer();
 };
 
 
