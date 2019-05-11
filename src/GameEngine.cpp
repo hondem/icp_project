@@ -121,3 +121,7 @@ void GameEngine::moveFigure(Figure *figure, Field target) {
     this->gameCheckboard->setFieldFigure(origField, nullptr);
     figure->setPosition(target);
 }
+
+map<int, MoveRecord*> GameEngine::getGameSteps() {
+    return this->gameSteps;
+}

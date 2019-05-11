@@ -9,6 +9,7 @@
 #include "GRedoButton.h"
 #include <QLabel>
 #include "GBoardAxis.h"
+#include "../Utils/MoveRecord.h"
 
 
 GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
@@ -116,6 +117,18 @@ void GBoard::refresh() {
     this->figures.clear();
 
     renderFigures();
+
+    // remove steps from list
+    for (auto it : this->moveList->items) {
+        this->moveList->clear();
+    }
+
+    // write steps into list
+    for(const auto& it : this->gameEngine->getGameSteps()) {
+        QString *item = new QString(MoveRecord::toString(it.second).data());
+        this->moveList->items.push_back(item);
+        this->moveList->addItem(*item);
+    }
 }
 
 void GBoard::redoBtnClick() {

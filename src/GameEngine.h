@@ -80,6 +80,12 @@ public:
      * @param target Target field.
      */
     void moveFigure(Figure *figure, Field target);
+
+    /**
+     * @brief Returns game steps parsed from Parser
+     * @return map<int, MoveRecord*> gameSteps
+     */
+    map<int, MoveRecord*> getGameSteps();
 };
 
 
