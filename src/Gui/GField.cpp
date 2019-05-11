@@ -63,12 +63,23 @@ void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){
         });
         this->board->gameEngine->moveFigure(movedFigure, {xPos, yPos});
         this->board->refresh();
+        this->board->whiteOnMove = ! this->board->whiteOnMove;
         return;
     }
 
     if (this->board->gameEngine->getCheckboard()->getFieldFigure({xPos, yPos}) != nullptr) {
         if (this->board->selected != nullptr) {
             this->board->selected->styleNotSelected();
+        }
+
+        Figure *movedFigure = this->board->gameEngine->getCheckboard()->getFieldFigure({
+               xPos, yPos
+        });
+        if (this->board->whiteOnMove && false == movedFigure->isWhite()) {
+            return;
+        }
+        if (false == this->board->whiteOnMove && movedFigure->isWhite()) {
+            return;
         }
 
         this->styleSelected();

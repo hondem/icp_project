@@ -18,12 +18,12 @@ int Window::run(int argc, char *argv[], GameEngine *gameEngine) {
 
     // main scene
     scene = new QGraphicsScene();
-    scene->setSceneRect(0, 0, 1300, 882);
+    scene->setSceneRect(0, 0, 1270, 882);
 
     // scene for the first tab
     QGraphicsScene *chessScene1 = new QGraphicsScene;
     //QGraphicsScene *chessScene2 = new QGraphicsScene;
-    chessScene1->setSceneRect(0, 0, 800, 800);
+    chessScene1->setSceneRect(0, 0, 1250, 800);
     //chessScene2->setSceneRect(0, 0, 800, 800);
 
     // set view
@@ -48,7 +48,7 @@ int Window::run(int argc, char *argv[], GameEngine *gameEngine) {
     tabWidget = new QTabWidget();
     tabWidget->addTab(widget1, "Tab 1");
     //tabWidget->addTab(widget2, "Tab 2");
-    tabWidget->setFixedSize(840, 850);
+    tabWidget->setFixedSize(1270, 850);
     QToolButton *toolButton = new GTabBtn(this);
     toolButton->setText("+");
     tabWidget->setCornerWidget(toolButton, Qt::TopRightCorner);
@@ -70,7 +70,7 @@ void Window::createTab() {
     sprintf(&(tabName[4]), "%d", tabsGenerated);
 
     QGraphicsScene *chessScene1 = new QGraphicsScene;
-    chessScene1->setSceneRect(0, 0, 800, 800);
+    chessScene1->setSceneRect(0, 0, 1250, 800);
     GBoard *board1 = new GBoard(chessScene1, new GameEngine("../tests/3.src"));
     chessScene1->addItem(board1);
     QGraphicsView *widget1 = new QGraphicsView(chessScene1);

@@ -2,11 +2,16 @@
 #include "../GameEngine.h"
 
 #include <QGraphicsScene>
+#include "GMoveList.h"
 #include "../Figure.h"
 #include "GFigure.h"
+#include "GUndoButton.h"
+#include "GRedoButton.h"
+#include <QLabel>
 
 
 GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
+    this->whiteOnMove = true;
     this->selected = nullptr;
     this->scene = scene;
     this->gameEngine = gameEngine;
@@ -21,12 +26,46 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
     }
 
     renderFigures();
+
+    undoButton = new GUndoButton(this);
+    scene->addWidget(undoButton);
+    connect(undoButton, SIGNAL(released()), this, SLOT(undoBtnClick()));
+
+    redoButton = new GRedoButton(this);
+    scene->addWidget(redoButton);
+    connect(redoButton, SIGNAL(released()), this, SLOT(redoBtnClick()));
+
+    moveList = new GMoveList;
+    scene->addWidget(moveList);
+
+    intervalInput = new GInterval;
+    scene->addWidget(intervalInput);
+
+    QLabel *intervalLabel = new QLabel(QString("Interval (sekundy):"));
+    intervalLabel->move(815, 450);
+    intervalLabel->setStyleSheet("background-color: rgba(0,0,0,0%)");
+    scene->addWidget(intervalLabel);
+
+    playButton = new GPlayButton;
+    scene->addWidget(playButton);
+    connect(playButton, SIGNAL(released()), this, SLOT(playBtnClick()));
+
+    pauseButton = new GPauseButton;
+    scene->addWidget(pauseButton);
+    connect(pauseButton, SIGNAL(released()), this, SLOT(pauseBtnClick()));
+
+    fileOpenButton = new GFileOpenButton;
+    scene->addWidget(fileOpenButton);
+    connect(fileOpenButton, SIGNAL(released()), this, SLOT(fileOpenBtnClick()));
+
+    fileSaveAsButton = new GFileSaveAsButton;
+    scene->addWidget(fileSaveAsButton);
+    connect(fileSaveAsButton, SIGNAL(released()), this, SLOT(fileSaveAsBtnClick()));
 }
 
 void GBoard::renderFigures() {
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
-            //scene->addItem(fields[y][x]);
             Figure *figure = gameEngine->getCheckboard()->getFieldFigure({.x = x, .y = y});
 
             if (figure != nullptr) {
@@ -71,4 +110,46 @@ void GBoard::refresh() {
     this->figures.clear();
 
     renderFigures();
+}
+
+void GBoard::redoBtnClick() {
+    std::cout << "Redo\n";
+    this->gameEngine->redo();
+    this->refresh();
+}
+
+void GBoard::undoBtnClick() {
+    std::cout << "Undo\n";
+    this->gameEngine->undo();
+    this->refresh();
+}
+
+void GBoard::playBtnClick() {
+    std::cout << "Play\n";
+}
+
+void GBoard::pauseBtnClick() {
+    std::cout << "Pause\n";
+}
+
+void GBoard::fileOpenBtnClick() {
+    std::cout << "Open file dialog\n";
+
+    fileOpen = new GFileOpen;
+    QString filename = QFileDialog::getOpenFileName(fileOpen, "Open file", QDir::currentPath(), "All files (*.*)");
+
+    if (false == filename.isNull()) {
+        std::cout << "open: " << filename.toUtf8().constData() << "\n";
+    }
+}
+
+void GBoard::fileSaveAsBtnClick() {
+    std::cout << "Save file as...\n";
+
+    fileSaveAs = new GFileSaveAs;
+    QString filename = QFileDialog::getSaveFileName(fileSaveAs, "Save file as", QDir::currentPath(), "All files (*.*)");
+
+    if (false == filename.isNull()) {
+        std::cout << "save as: " << filename.toUtf8().constData() << "\n";
+    }
 }
