@@ -52,6 +52,13 @@ GField::GField(QGraphicsItem *parent, int x, int y, GBoard *board) {
 void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){
     std::cout << "Click at " + std::to_string(xPos) + ":" + std::to_string(yPos) + "\n";
 
+    if (this->board->fields[yPos][xPos]->available) {
+        std::cout << "Move to " << xPos << ":" << yPos << "\n";
+        this->board->setAllFieldsNotAvailable();
+        this->board->selected->styleNotSelected();
+        return;
+    }
+
     if (this->board->gameEngine->getCheckboard()->getFieldFigure({xPos, yPos}) != nullptr) {
         if (this->board->selected != nullptr) {
             this->board->selected->styleNotSelected();

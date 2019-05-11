@@ -26,6 +26,8 @@ public:
     GBoard(QGraphicsScene *scene, GameEngine *gameEngine);
 
     void showAvailableFields(GField *source);
+
+    void setAllFieldsNotAvailable();
 };
 
 
