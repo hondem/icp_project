@@ -16,6 +16,7 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
             fields[y][x] = new GField(this, x, y, this);
+            scene->addItem(fields[y][x]);
         }
     }
 
@@ -25,7 +26,7 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
 void GBoard::renderFigures() {
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
-            scene->addItem(fields[y][x]);
+            //scene->addItem(fields[y][x]);
             Figure *figure = gameEngine->getCheckboard()->getFieldFigure({.x = x, .y = y});
 
             if (figure != nullptr) {
@@ -62,23 +63,12 @@ void GBoard::setAllFieldsNotAvailable() {
 }
 
 void GBoard::refresh() {
-    for (int y = 0; y < 8; y++) {
-        for (int x = 0; x < 8; x++) {
-            scene->removeItem(fields[y][x]);
-        }
-    }
-
     for (auto figure : this->figures) {
         scene->removeItem(figure);
+        delete figure;
     }
 
     this->figures.clear();
-
-    for (int y = 0; y < 8; y++) {
-        for (int x = 0; x < 8; x++) {
-            fields[y][x] = new GField(this, x, y, this);
-        }
-    }
 
     renderFigures();
 }
