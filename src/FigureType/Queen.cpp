@@ -71,9 +71,9 @@ bool Queen::isMovePossible(Field field) {
             startField.setX(startField.x + xAdd);
             startField.setY(startField.y + yAdd);
 
-            if(this->checkboard->getFieldFigure(startField) != nullptr) return false;
+            if(startField != targetField) if(this->checkboard->getFieldFigure(startField) != nullptr) return false;
 
-        } while(field != targetField);
+        } while(startField!= targetField);
 
         if(
             this->checkboard->getFieldFigure(field) != nullptr &&
