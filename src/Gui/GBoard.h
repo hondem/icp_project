@@ -16,6 +16,8 @@
 #include "GPauseButton.h"
 #include "GFileOpen.h"
 #include "GFileOpenButton.h"
+#include "GFileSaveAs.h"
+#include "GFileSaveAsButton.h"
 
 class GRedoButton;
 class GUndoButton;
@@ -43,6 +45,8 @@ public:
     GPauseButton *pauseButton;
     GFileOpen *fileOpen;
     GFileOpenButton *fileOpenButton;
+    GFileSaveAs *fileSaveAs;
+    GFileSaveAsButton *fileSaveAsButton;
 
     /**
      * @brief Current selected field with the figure, that is moved with.
@@ -71,6 +75,7 @@ public slots:
     void playBtnClick();
     void pauseBtnClick();
     void fileOpenBtnClick();
+    void fileSaveAsBtnClick();
 };
 
 

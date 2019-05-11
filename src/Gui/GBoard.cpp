@@ -58,6 +58,9 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
     scene->addWidget(fileOpenButton);
     connect(fileOpenButton, SIGNAL(released()), this, SLOT(fileOpenBtnClick()));
 
+    fileSaveAsButton = new GFileSaveAsButton;
+    scene->addWidget(fileSaveAsButton);
+    connect(fileSaveAsButton, SIGNAL(released()), this, SLOT(fileSaveAsBtnClick()));
 }
 
 void GBoard::renderFigures() {
@@ -137,5 +140,16 @@ void GBoard::fileOpenBtnClick() {
 
     if (false == filename.isNull()) {
         std::cout << "open: " << filename.toUtf8().constData() << "\n";
+    }
+}
+
+void GBoard::fileSaveAsBtnClick() {
+    std::cout << "Save file as...\n";
+
+    fileSaveAs = new GFileSaveAs;
+    QString filename = QFileDialog::getSaveFileName(fileSaveAs, "Save file as", QDir::currentPath(), "All files (*.*)");
+
+    if (false == filename.isNull()) {
+        std::cout << "save as: " << filename.toUtf8().constData() << "\n";
     }
 }
