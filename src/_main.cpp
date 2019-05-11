@@ -8,7 +8,7 @@
 int main(int argc, char *argv[]) {
     std::cout << "Cus\n";
 
-    GameEngine *engine = new GameEngine("../tests/3.src");
+    GameEngine *engine = new GameEngine();
 
     Window *window = new Window();
 

@@ -34,6 +34,13 @@ struct Coords {
      * @return
      */
     static Field convertCoordsToField(Coords coords);
+
+    /**
+     * Converts coords to string
+     * @param coords
+     * @return
+     */
+    static std::string toString(Coords coords);
 };
 
 
