@@ -17,11 +17,11 @@ private:
      */
     map<int, MoveRecord*> gameSteps;
 
-public:
     /**
      * An instance of checkboard
      */
     Checkboard *gameCheckboard;
+public:
 
     /**
      * Main constructor of GameEngine
@@ -54,6 +54,12 @@ public:
      * @param stepIndex
      */
     void setStep(int stepIndex);
+
+    /**
+     * Getter for game checkboard
+     * @return Instance of game checkboard
+     */
+    Checkboard *getCheckboard();
 };
 
 

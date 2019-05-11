@@ -28,3 +28,7 @@ void GameEngine::redo() {
 void GameEngine::setStep(int stepIndex) {
 
 }
+
+Checkboard* GameEngine::getCheckboard() {
+    return this->gameCheckboard;
+}
