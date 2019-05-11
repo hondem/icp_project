@@ -15,7 +15,6 @@ public:
     void styleSelected();
     void styleNotSelected();
     void styleAvailable();
-
     void styleNotAvailable();
     int xPos;
     int yPos;
