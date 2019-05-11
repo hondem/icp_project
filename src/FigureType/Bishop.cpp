@@ -10,6 +10,29 @@ Bishop::Bishop(bool white, Field position, Checkboard *checkboard) : Figure(whit
 }
 
 bool Bishop::isMovePossible(Field field) {
-    (void) field;
+    Field startField = this->getPosition();
+    Field targetField = field;
+
+    /**
+     * Moving in diagonal
+     */
+    if(abs(field.y - this->getPosition().y) == abs(field.x - this->getPosition().x)){
+        int xAdd = (targetField.x > startField.x) ? 1 : -1;
+        int yAdd = (targetField.y > startField.y) ? 1 : -1;
+
+        do{
+            // Adding differentials to X, Y
+            startField.setX(startField.x + xAdd);
+            startField.setY(startField.y + yAdd);
+
+            if(this->checkboard->getFieldFigure(startField) != nullptr) return false;
+
+        } while(field != targetField);
+
+        if(this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()) return false;
+
+        return true;
+    }
+
     return false;
 }
