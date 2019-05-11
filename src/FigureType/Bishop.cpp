@@ -2,7 +2,11 @@
 #include "string.h"
 
 Bishop::Bishop(bool white, Field position, Checkboard *checkboard) : Figure(white, position, checkboard) {
-    strcpy(this->figureImg, "Chess_blt45.png");
+    if (white) {
+        strcpy(this->figureImg, "Chess_blt45.png");
+    } else {
+        strcpy(this->figureImg, "Chess_bdt45.png");
+    }
 }
 
 bool Bishop::isMovePossible(Field field) {

@@ -2,7 +2,11 @@
 #include "string.h"
 
 Rook::Rook(bool white, Field position, Checkboard *checkboard) : Figure(white, position, checkboard) {
-    strcpy(this->figureImg, "Chess_rlt45.png");
+    if (white) {
+        strcpy(this->figureImg, "Chess_rlt45.png");
+    } else {
+        strcpy(this->figureImg, "Chess_rdt45.png");
+    }
 }
 
 bool Rook::isMovePossible(Field field) {

@@ -2,7 +2,11 @@
 #include "string.h"
 
 Pawn::Pawn(bool white, Field position, Checkboard *checkboard) : Figure(white, position, checkboard) {
-    strcpy(this->figureImg, "Chess_plt45.png");
+    if (white) {
+        strcpy(this->figureImg, "Chess_plt45.png");
+    } else {
+        strcpy(this->figureImg, "Chess_pdt45.png");
+    }
 }
 
 bool Pawn::isMovePossible(Field field) {

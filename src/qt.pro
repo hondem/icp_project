@@ -27,3 +27,5 @@ HEADERS += \
     Gui/GBoard.h \
     Gui/GField.h \
     Gui/GFigure.h \
+
+RESOURCES = Images/sources.qrc
