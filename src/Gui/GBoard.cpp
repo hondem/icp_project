@@ -48,9 +48,16 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
 
     playButton = new GPlayButton;
     scene->addWidget(playButton);
+    connect(playButton, SIGNAL(released()), this, SLOT(playBtnClick()));
 
     pauseButton = new GPauseButton;
     scene->addWidget(pauseButton);
+    connect(pauseButton, SIGNAL(released()), this, SLOT(pauseBtnClick()));
+
+    fileOpenButton = new GFileOpenButton;
+    scene->addWidget(fileOpenButton);
+    connect(fileOpenButton, SIGNAL(released()), this, SLOT(fileOpenBtnClick()));
+
 }
 
 void GBoard::renderFigures() {
@@ -112,4 +119,23 @@ void GBoard::undoBtnClick() {
     std::cout << "Undo\n";
     this->gameEngine->undo();
     this->refresh();
+}
+
+void GBoard::playBtnClick() {
+    std::cout << "Play\n";
+}
+
+void GBoard::pauseBtnClick() {
+    std::cout << "Pause\n";
+}
+
+void GBoard::fileOpenBtnClick() {
+    std::cout << "Open file dialog\n";
+
+    fileOpen = new GFileOpen;
+    QString filename = QFileDialog::getOpenFileName(fileOpen, "Open file", QDir::currentPath(), "All files (*.*)");
+
+    if (false == filename.isNull()) {
+        std::cout << "open: " << filename.toUtf8().constData() << "\n";
+    }
 }

@@ -14,6 +14,8 @@
 #include "GInterval.h"
 #include "GPlayButton.h"
 #include "GPauseButton.h"
+#include "GFileOpen.h"
+#include "GFileOpenButton.h"
 
 class GRedoButton;
 class GUndoButton;
@@ -39,6 +41,8 @@ public:
     GInterval *intervalInput;
     GPlayButton *playButton;
     GPauseButton *pauseButton;
+    GFileOpen *fileOpen;
+    GFileOpenButton *fileOpenButton;
 
     /**
      * @brief Current selected field with the figure, that is moved with.
@@ -64,6 +68,9 @@ public:
 public slots:
     void redoBtnClick();
     void undoBtnClick();
+    void playBtnClick();
+    void pauseBtnClick();
+    void fileOpenBtnClick();
 };
 
 
