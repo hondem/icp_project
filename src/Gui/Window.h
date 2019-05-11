@@ -14,6 +14,11 @@ class Window : public QObject {
     Q_OBJECT
 
     /**
+     * @brief Application
+     */
+    QApplication *app;
+
+    /**
      * @brief Scene of the GUI
      */
     QGraphicsScene *scene;
@@ -26,7 +31,12 @@ class Window : public QObject {
     /**
      * @brief Count of open tabs.
      */
-    int tabs;
+    int tabsOpen;
+
+    /**
+     * @brief Count of tabs, that were opened.
+     */
+    int tabsGenerated;
 
 public:
     /**

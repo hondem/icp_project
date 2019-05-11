@@ -14,7 +14,7 @@
 #include "GTabBtn.h"
 
 int Window::run(int argc, char *argv[], GameEngine *gameEngine) {
-    QApplication app(argc, argv);
+    app = new QApplication(argc, argv);
 
     // main scene
     scene = new QGraphicsScene();
@@ -42,8 +42,9 @@ int Window::run(int argc, char *argv[], GameEngine *gameEngine) {
     QGraphicsView *widget1 = new QGraphicsView(chessScene1);
     //QGraphicsView *widget2 = new QGraphicsView(chessScene2);
 
-    // tabs
-    tabs = 1;
+    // tabsOpen
+    tabsOpen = 1;
+    tabsGenerated = 1;
     tabWidget = new QTabWidget();
     tabWidget->addTab(widget1, "Tab 1");
     //tabWidget->addTab(widget2, "Tab 2");
@@ -59,13 +60,14 @@ int Window::run(int argc, char *argv[], GameEngine *gameEngine) {
 
     view->show();
 
-    return app.exec();
+    return app->exec();
 }
 
 void Window::createTab() {
-    tabs++;
+    tabsOpen++;
+    tabsGenerated++;
     char tabName[20] = "Tab ";
-    sprintf(&(tabName[4]), "%d", tabs);
+    sprintf(&(tabName[4]), "%d", tabsGenerated);
 
     QGraphicsScene *chessScene1 = new QGraphicsScene;
     chessScene1->setSceneRect(0, 0, 800, 800);
@@ -79,4 +81,9 @@ void Window::createTab() {
 void Window::closeTab(int index) {
     std::cout << "Close tab " << std::to_string(index) << "\n";
     tabWidget->removeTab(index);
+    tabsOpen--;
+
+    if (tabsOpen == 0) {
+        app->closeAllWindows();
+    }
 }
