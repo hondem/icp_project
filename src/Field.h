@@ -16,7 +16,7 @@ struct Field {
     int y;
 
     /**
-     * Overriding operator for comparison
+     * Overloading operator for comparison
      * @param a
      * @return
      */
@@ -25,12 +25,30 @@ struct Field {
     }
 
     /**
-     * Overriding operator for comparison
+     * Overloading operator for comparison
      * @param a
      * @return
      */
     bool operator!=(const Field& a) {
         return !(x == a.x && y == a.y);
+    }
+
+    /**
+     * Overloading operator for adding
+     * @param a
+     * @return
+     */
+    Field operator+(const Field& a) const {
+        return (Field){x+a.x, y+a.y};
+    }
+
+    /**
+     * Overloading operator for substracting
+     * @param a
+     * @return
+     */
+    Field operator-(const Field& a) const {
+        return (Field){x-a.x, y-a.y};
     }
 
     /**
