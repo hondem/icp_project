@@ -23,6 +23,7 @@ SOURCES += \
 
 HEADERS += \
     Field.h \
+    Coords.h \
     Utils/MoveRecord.h \
     Gui/Window.h \
     Gui/GBoard.h \

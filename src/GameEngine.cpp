@@ -24,7 +24,7 @@ void GameEngine::undo() {
 }
 
 void GameEngine::redo() {
-    
+
 }
 
 void GameEngine::setStep(int stepIndex) {
