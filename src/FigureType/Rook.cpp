@@ -10,73 +10,49 @@ Rook::Rook(bool white, Field position, Checkboard *checkboard) : Figure(white, p
 }
 
 bool Rook::isMovePossible(Field field) {
+
+    Field startField = this->getPosition();
+    Field targetField = field;
+
     /**
      * Moving in columns
      */
-    if(this->getPosition().x == field.x){
-
-        if(field.y > this->getPosition().y){
-            for(int i = this->getPosition().y + 1; i < field.y; i++){
-                if(this->checkboard->getFieldFigure((Field){this->getPosition().x, i}) != nullptr){
-                    return false;
-                }
-            }
-
-            if(
-                this->checkboard->getFieldFigure(field) != nullptr &&
-                this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()
-            ){
-                return false;
-            }
-        } else {
-            for(int i = this->getPosition().y - 1; i > field.y; i--){
-                if(this->checkboard->getFieldFigure((Field){this->getPosition().x, i}) != nullptr){
-                    return false;
-                }
-            }
-
-            if(
-                this->checkboard->getFieldFigure(field) != nullptr &&
-                this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()
-            ){
-                return false;
-            }
+    if(field.x == this->getPosition().x){
+        // Swap target and source field
+        if (startField.y > targetField.y){
+            Field tmp = startField;
+            startField = targetField;
+            targetField = tmp;
         }
+
+        for(int i = startField.y + 1; i < targetField.y; i++){
+            if (this->checkboard->getFieldFigure((Field){field.x, i}) != nullptr) return false;
+        }
+
+        if (this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()) return false;
+
+        return true;
     }
 
     /**
      * Moving in rows
      */
-    if(this->getPosition().y == field.y){
-
-        if(field.x > this->getPosition().x){
-            for(int i = this->getPosition().x + 1; i < field.x; i++){
-                if(this->checkboard->getFieldFigure((Field){i, this->getPosition().y}) != nullptr){
-                    return false;
-                }
-            }
-
-            if(
-                this->checkboard->getFieldFigure(field) != nullptr &&
-                this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()
-            ){
-                return false;
-            }
-        } else {
-            for(int i = this->getPosition().x - 1; i > field.x; i--){
-                if(this->checkboard->getFieldFigure((Field){i, this->getPosition().y}) != nullptr){
-                    return false;
-                }
-            }
-
-            if(
-                this->checkboard->getFieldFigure(field) != nullptr &&
-                this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()
-            ){
-                return false;
-            }
+    if(field.y == this->getPosition().y){
+        // Swap target and source field
+        if (startField.x > targetField.x){
+            Field tmp = startField;
+            startField = targetField;
+            targetField = tmp;
         }
+
+        for(int i = startField.x + 1; i < targetField.x; i++){
+            if (this->checkboard->getFieldFigure((Field){i, field.y}) != nullptr) return false;
+        }
+
+        if (this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()) return false;
+
+        return true;
     }
 
-    return true;
+    return false;
 }
