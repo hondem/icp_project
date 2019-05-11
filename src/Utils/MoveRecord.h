@@ -1,6 +1,7 @@
 #ifndef MOVERECORD_HEADER
 #define MOVERECORD_HEADER
 
+#include <sstream>
 #include <string>
 
 using namespace std;
@@ -35,6 +36,13 @@ struct MoveRecord{
      * Contains whether it is check or mat
      */
     char flag;
+
+    /**
+     * Converts MoveRecord to string
+     * @param moveRecord
+     * @return
+     */
+    string static toString(MoveRecord *moveRecord);
 };
 
 #endif
