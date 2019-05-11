@@ -5,6 +5,8 @@
 #include <QGraphicsScene>
 #include "GField.h"
 #include "../GameEngine.h"
+#include <vector>
+#include "GFigure.h"
 
 class GBoard : public QGraphicsRectItem {
 public:
@@ -21,6 +23,8 @@ public:
      */
     GameEngine *gameEngine;
 
+    std::vector<GFigure *> figures;
+
     void renderFigures();
 
     GBoard(QGraphicsScene *scene, GameEngine *gameEngine);
@@ -28,6 +32,8 @@ public:
     void showAvailableFields(GField *source);
 
     void setAllFieldsNotAvailable();
+
+    void refresh();
 };
 
 

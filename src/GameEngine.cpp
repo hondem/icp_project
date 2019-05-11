@@ -32,3 +32,15 @@ void GameEngine::setStep(int stepIndex) {
 Checkboard* GameEngine::getCheckboard() {
     return this->gameCheckboard;
 }
+
+void GameEngine::moveFigure(Figure *figure, Field target) {
+    if (false == figure->isMovePossible(target)) {
+        return;
+    }
+
+    Field origField = figure->getPosition();
+
+    this->gameCheckboard->setFieldFigure(target, figure);
+    this->gameCheckboard->setFieldFigure(origField, nullptr);
+    figure->setPosition(target);
+}

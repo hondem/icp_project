@@ -30,6 +30,7 @@ void GBoard::renderFigures() {
 
             if (figure != nullptr) {
                 GFigure *gFigure = new GFigure(figure);
+                this->figures.push_back(gFigure);
                 scene->addItem(gFigure);
             }
         }
@@ -58,4 +59,26 @@ void GBoard::setAllFieldsNotAvailable() {
             this->fields[y][x]->styleNotAvailable();
         }
     }
+}
+
+void GBoard::refresh() {
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            scene->removeItem(fields[y][x]);
+        }
+    }
+
+    for (auto figure : this->figures) {
+        scene->removeItem(figure);
+    }
+
+    this->figures.clear();
+
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            fields[y][x] = new GField(this, x, y, this);
+        }
+    }
+
+    renderFigures();
 }

@@ -20,3 +20,7 @@ bool Figure::isMovePossible(Field field) {
 
     return false;
 };
+
+void Figure::setPosition(Field position) {
+    this->position = position;
+}

@@ -60,6 +60,13 @@ public:
      * @return Instance of game checkboard
      */
     Checkboard *getCheckboard();
+
+    /**
+     * @brief Moves the figure to the target field.
+     * @param figure Figure to be moved with.
+     * @param target Target field.
+     */
+    void moveFigure(Figure *figure, Field target);
 };
 
 

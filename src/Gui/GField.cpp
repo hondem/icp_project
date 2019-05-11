@@ -56,6 +56,13 @@ void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){
         std::cout << "Move to " << xPos << ":" << yPos << "\n";
         this->board->setAllFieldsNotAvailable();
         this->board->selected->styleNotSelected();
+
+        GField *movedFigureField = this->board->selected;
+        Figure *movedFigure = this->board->gameEngine->getCheckboard()->getFieldFigure({
+            movedFigureField->xPos, movedFigureField->yPos
+        });
+        this->board->gameEngine->moveFigure(movedFigure, {xPos, yPos});
+        this->board->refresh();
         return;
     }
 

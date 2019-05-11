@@ -50,6 +50,12 @@ public:
     Field getPosition();
 
     /**
+     * @brief Sets new position to the figure
+     * @param position New position
+     */
+    void setPosition(Field position);
+
+    /**
      * Abstraktní metoda
      *
      * @brief Kontroluje, jestli daná figurka může provést tah na dané políčko.
