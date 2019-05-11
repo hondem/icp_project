@@ -7,15 +7,19 @@
 class GBoard;
 
 class GField : public QGraphicsRectItem {
-    int xPos;
-    int yPos;
     QGraphicsItem *parent;
     GBoard *board;
 
+public:
+    bool available;
     void styleSelected();
     void styleNotSelected();
+    void styleAvailable();
 
-public:
+    void styleNotAvailable();
+    int xPos;
+    int yPos;
+
     GField(QGraphicsItem *parent, int x, int y, GBoard *board);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
 };

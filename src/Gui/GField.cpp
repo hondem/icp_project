@@ -8,6 +8,7 @@
 GField::GField(QGraphicsItem *parent, int x, int y, GBoard *board) {
     this->board = board;
     this->parent = parent;
+    this->available = false;
     this->xPos = x;
     this->yPos = y;
 
@@ -52,13 +53,14 @@ void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){
     std::cout << "Click at " + std::to_string(xPos) + ":" + std::to_string(yPos) + "\n";
 
     if (this->board->gameEngine->getCheckboard()->getFieldFigure({xPos, yPos}) != nullptr) {
-        this->styleSelected();
-
         if (this->board->selected != nullptr) {
             this->board->selected->styleNotSelected();
         }
 
+        this->styleSelected();
         this->board->selected = this;
+
+        this->board->showAvailableFields(this);
     }
 }
 
@@ -71,6 +73,34 @@ void GField::styleSelected() {
 }
 
 void GField::styleNotSelected() {
+    QPen pen(Qt::NoPen);
+    this->setPen(pen);
+    this->setRect(0, 0, 100, 100);
+    this->setX(x()-2);
+    this->setY(y()-2);
+}
+
+void GField::styleAvailable() {
+    if (this->available) {
+        return;
+    }
+
+    this->available = true;
+
+    QPen pen(Qt::yellow, 5, Qt::SolidLine, Qt::RoundCap, Qt::BevelJoin);
+    this->setPen(pen);
+    this->setRect(0, 0, 95, 95);
+    this->setX(x()+2);
+    this->setY(y()+2);
+}
+
+void GField::styleNotAvailable() {
+    if (false == this->available) {
+        return;
+    }
+
+    this->available = false;
+
     QPen pen(Qt::NoPen);
     this->setPen(pen);
     this->setRect(0, 0, 100, 100);

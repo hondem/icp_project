@@ -36,3 +36,18 @@ void GBoard::renderFigures() {
     }
 
 }
+
+void GBoard::showAvailableFields(GField *source) {
+    Figure *figure = this->gameEngine->getCheckboard()->getFieldFigure({source->xPos, source->yPos});
+
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            if (figure->isMovePossible({x, y})) {
+                std::cout << "Available " << x << ":" << y << "\n";
+                this->fields[y][x]->styleAvailable();
+            } else {
+                this->fields[y][x]->styleNotAvailable();
+            }
+        }
+    }
+}
