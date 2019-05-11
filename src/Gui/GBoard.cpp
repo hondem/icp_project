@@ -156,5 +156,6 @@ void GBoard::fileSaveAsBtnClick() {
 
     if (false == filename.isNull()) {
         std::cout << "save as: " << filename.toUtf8().constData() << "\n";
+        this->gameEngine->exportGame(filename.toUtf8().constData());
     }
 }

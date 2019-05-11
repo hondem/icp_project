@@ -121,3 +121,27 @@ void GameEngine::moveFigure(Figure *figure, Field target) {
     this->gameCheckboard->setFieldFigure(origField, nullptr);
     figure->setPosition(target);
 }
+
+void GameEngine::exportGame(const char *filePath) {
+    stringstream ss;
+
+    int step = 1;
+    int realIndex = 1;
+    for(auto i = this->gameSteps.begin(); i != this->gameSteps.end(); i++){
+        if(step % 2 != 0){
+            ss << realIndex++ << ".";
+        }
+
+        ss << " " << MoveRecord::toString(i->second);
+
+        if(step % 2 == 0){
+            ss << endl;
+        }
+
+        step++;
+    }
+
+    ofstream os (filePath);
+    os << ss.str();
+    os.close();
+}

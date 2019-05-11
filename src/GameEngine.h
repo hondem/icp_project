@@ -9,6 +9,8 @@
 #include "Checkboard.h"
 #include <map>
 #include <string>
+#include <sstream>
+#include <fstream>
 
 class GameEngine {
 private:
@@ -80,6 +82,12 @@ public:
      * @param target Target field.
      */
     void moveFigure(Figure *figure, Field target);
+
+    /**
+     * Creates string with whole game in notation
+     * @return
+     */
+    void exportGame(const char *filePath);
 };
 
 
