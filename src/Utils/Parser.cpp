@@ -28,7 +28,7 @@ map<int, MoveRecord*> Parser::LoadFile(string filePath) {
                 if (lines[lineIndex].empty() && lineIndex < loadedFile.size()) {
                     // Insert the part of line without index number (we don't need it anymore :))
                     line = line.substr(line.find(". ") + 2, line.length());
-                    line = line.erase(line.size() - 1);
+                    //line = line.erase(line.size() - 1);
 
                     lines[lineIndex] = line;
                 } else {
