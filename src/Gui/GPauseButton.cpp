@@ -3,5 +3,5 @@
 GPauseButton::GPauseButton() {
     setText("Pause");
     setFixedSize(150, 50);
-    move(980, 600);
+    move(1000, 600);
 }

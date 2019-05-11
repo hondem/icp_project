@@ -5,5 +5,5 @@ GMoveList::GMoveList() {
     addItem(QString("Druhy tah"));
 
     setFixedSize(315, 300);
-    move(815, 65);
+    move(835, 65);
 }

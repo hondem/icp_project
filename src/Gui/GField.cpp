@@ -46,7 +46,7 @@ GField::GField(QGraphicsItem *parent, int x, int y, GBoard *board) {
     this->setPen(pen);
 
     setRect(0, 0, 100, 100);
-    setPos(x*100, 700-y*100);
+    setPos(x*100 + 20, 700-y*100);
 }
 
 void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){

@@ -8,6 +8,7 @@
 #include "GUndoButton.h"
 #include "GRedoButton.h"
 #include <QLabel>
+#include "GBoardAxis.h"
 
 
 GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
@@ -24,6 +25,8 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
             scene->addItem(fields[y][x]);
         }
     }
+
+    GBoardAxis::drawAxis(this);
 
     renderFigures();
 
@@ -42,7 +45,7 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
     scene->addWidget(intervalInput);
 
     QLabel *intervalLabel = new QLabel(QString("Interval (sekundy):"));
-    intervalLabel->move(815, 450);
+    intervalLabel->move(835, 450);
     intervalLabel->setStyleSheet("background-color: rgba(0,0,0,0%)");
     scene->addWidget(intervalLabel);
 

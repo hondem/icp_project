@@ -3,5 +3,5 @@
 GPlayButton::GPlayButton() {
     setText("Play");
     setFixedSize(150, 50);
-    move(815, 600);
+    move(835, 600);
 }
