@@ -150,6 +150,10 @@ map<int, MoveRecord*> GameEngine::getGameSteps() {
     return this->gameSteps;
 }
 
+void GameEngine::setGameSteps(map<int, MoveRecord *> newGameSteps) {
+    this->gameSteps = newGameSteps;
+}
+
 int GameEngine::getCurrentStep() {
     return this->currentMove;
 }

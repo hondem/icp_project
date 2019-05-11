@@ -35,12 +35,6 @@ private:
      */
     Figure *findFigure(MoveRecord* currentMove);
 
-    /**
-     * Translates type of figure to internal representation
-     * @param figure
-     * @return String of converted figure
-     */
-    string translateTypeOfFigure(Figure *figure);
 public:
 
     /**
@@ -89,17 +83,30 @@ public:
      */
     void exportGame(const char *filePath);
 
-    /*
+    /**
      * @brief Returns game steps parsed from Parser
      * @return map<int, MoveRecord*> gameSteps
      */
     map<int, MoveRecord*> getGameSteps();
 
     /**
+     * Sets new game steps
+     * @param newGameSteps
+     */
+    void setGameSteps(map<int, MoveRecord*> newGameSteps);
+
+    /**
      * @brief Returns current move index
      * @return int Current move index
      */
     int getCurrentStep();
+
+    /**
+     * Translates type of figure to internal representation
+     * @param figure
+     * @return String of converted figure
+     */
+    string translateTypeOfFigure(Figure *figure);
 };
 
 
