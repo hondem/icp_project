@@ -13,6 +13,14 @@ public:
     King(bool white, Field position, Checkboard *checkboard);
 
     bool isMovePossible(Field field);
+
+private:
+    /**
+     * Checks whether field is 'dangerous'
+     * @param field
+     * @return
+     */
+    bool checkIfFieldIsAttacked(Field field);
 };
 
 

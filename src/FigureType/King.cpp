@@ -21,9 +21,21 @@ bool King::isMovePossible(Field field) {
     resField.setY(abs(resField.y));
 
     if(resField.x >= 0 && resField.x <= 1 && resField.y >= 0 && resField.y <= 1){
+        if(this->checkIfFieldIsAttacked(field)) return false;
+        return true;
+    }
+    return false;
+}
 
-
-
+bool King::checkIfFieldIsAttacked(Field field) {
+    for(int y = 0; y < 8; y++){
+        for(int x = 0; x < 8; x++){
+            if(
+                this->checkboard->getFieldFigure((Field){x, y}) != nullptr &&
+                this->checkboard->getFieldFigure((Field){x, y})->isWhite() != this->isWhite() &&
+                this->checkboard->getFieldFigure((Field){x, y})->isMovePossible(field)
+            ) return true;
+        }
     }
     return false;
 }
