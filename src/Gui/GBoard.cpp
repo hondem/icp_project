@@ -4,6 +4,8 @@
 #include <QGraphicsScene>
 #include "../Figure.h"
 #include "GFigure.h"
+#include "GUndoButton.h"
+#include "GRedoButton.h"
 
 
 GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
@@ -22,6 +24,14 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
     }
 
     renderFigures();
+
+    undoButton = new GUndoButton(this);
+    scene->addWidget(undoButton);
+    connect(undoButton, SIGNAL(released()), this, SLOT(undoBtnClick()));
+
+    redoButton = new GRedoButton(this);
+    scene->addWidget(redoButton);
+    connect(redoButton, SIGNAL(released()), this, SLOT(redoBtnClick()));
 }
 
 void GBoard::renderFigures() {
@@ -71,4 +81,14 @@ void GBoard::refresh() {
     this->figures.clear();
 
     renderFigures();
+}
+
+void GBoard::redoBtnClick() {
+    std::cout << "Redo\n";
+    this->gameEngine->redo();
+}
+
+void GBoard::undoBtnClick() {
+    std::cout << "Undo\n";
+    this->gameEngine->undo();
 }

@@ -7,8 +7,16 @@
 #include "../GameEngine.h"
 #include <vector>
 #include "GFigure.h"
+#include "GRedoButton.h"
+#include "GUndoButton.h"
+#include <QObject>
 
-class GBoard : public QGraphicsRectItem {
+class GRedoButton;
+class GUndoButton;
+
+class GBoard : public QObject, public QGraphicsRectItem {
+Q_OBJECT;
+
 public:
 
     /**
@@ -18,6 +26,9 @@ public:
     GField *fields[8][8];
 
     QGraphicsScene *scene;
+
+    GRedoButton *redoButton;
+    GUndoButton *undoButton;
 
     /**
      * @brief Current selected field with the figure, that is moved with.
@@ -39,6 +50,10 @@ public:
     void setAllFieldsNotAvailable();
 
     void refresh();
+
+public slots:
+    void redoBtnClick();
+    void undoBtnClick();
 };
 
 
