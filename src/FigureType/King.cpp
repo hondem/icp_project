@@ -10,7 +10,20 @@ King::King(bool white, Field position, Checkboard *checkboard) : Figure(white, p
 }
 
 bool King::isMovePossible(Field field) {
-    (void) field;
+    if(
+        this->checkboard->getFieldFigure(field) != nullptr &&
+        this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()
+    ) return false;
 
+    Field resField = field - this->getPosition();
+
+    resField.setX(abs(resField.x));
+    resField.setY(abs(resField.y));
+
+    if(resField.x >= 0 && resField.x <= 1 && resField.y >= 0 && resField.y <= 1){
+
+
+
+    }
     return false;
 }

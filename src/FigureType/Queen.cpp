@@ -28,7 +28,10 @@ bool Queen::isMovePossible(Field field) {
             if (this->checkboard->getFieldFigure((Field){field.x, i}) != nullptr) return false;
         }
 
-        if (this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()) return false;
+        if(
+            this->checkboard->getFieldFigure(field) != nullptr &&
+            this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()
+        ) return false;
 
         return true;
     }
@@ -48,7 +51,10 @@ bool Queen::isMovePossible(Field field) {
             if (this->checkboard->getFieldFigure((Field){i, field.y}) != nullptr) return false;
         }
 
-        if (this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()) return false;
+        if(
+            this->checkboard->getFieldFigure(field) != nullptr &&
+            this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()
+        ) return false;
 
         return true;
     }
@@ -69,7 +75,10 @@ bool Queen::isMovePossible(Field field) {
 
         } while(field != targetField);
 
-        if(this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()) return false;
+        if(
+            this->checkboard->getFieldFigure(field) != nullptr &&
+            this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()
+        ) return false;
 
         return true;
     }

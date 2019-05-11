@@ -29,7 +29,10 @@ bool Bishop::isMovePossible(Field field) {
 
         } while(field != targetField);
 
-        if(this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()) return false;
+        if(
+            this->checkboard->getFieldFigure(field) != nullptr &&
+            this->checkboard->getFieldFigure(field)->isWhite() == this->isWhite()
+        ) return false;
 
         return true;
     }
