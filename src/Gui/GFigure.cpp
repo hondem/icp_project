@@ -13,7 +13,7 @@ GFigure::GFigure(Figure *figure) : QGraphicsPixmapItem() {
 
     strcat(imgAbs, img);
     setPixmap(QPixmap(imgAbs));
-    int x = figure->getPosition().x * 100;
+    int x = figure->getPosition().x * 100 + 20;
     int y = 700 - figure->getPosition().y * 100;
     setPos(x, y);
     this->setScale(0.1);
