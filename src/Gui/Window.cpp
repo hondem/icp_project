@@ -72,7 +72,7 @@ void Window::createTab() {
 
     QGraphicsScene *chessScene1 = new QGraphicsScene;
     chessScene1->setSceneRect(0, 0, 1150, 820);
-    GBoard *board1 = new GBoard(chessScene1, new GameEngine("../tests/3.src"));
+    GBoard *board1 = new GBoard(chessScene1, new GameEngine());
     board1->moveBy(20, 0);
     chessScene1->addItem(board1);
     QGraphicsView *widget1 = new QGraphicsView(chessScene1);
