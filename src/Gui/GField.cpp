@@ -64,6 +64,7 @@ void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){
         });
         this->board->gameEngine->moveFigure(movedFigure, {xPos, yPos});
 
+        /*
         map<int, MoveRecord*> oldGameSteps = this->board->gameEngine->getGameSteps();
         map<int, MoveRecord*> newGameSteps;
 
@@ -82,8 +83,10 @@ void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){
 
         newGameSteps[index] = newMove;
         this->board->gameEngine->setGameSteps(newGameSteps);
-
+*/
+        this->board->stepsDisabled = true;
         this->board->refresh();
+        this->board->stepsDisabled = false;
         this->board->whiteOnMove = ! this->board->whiteOnMove;
         return;
     }

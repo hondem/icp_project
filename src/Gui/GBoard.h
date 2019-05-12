@@ -26,11 +26,11 @@ class GUndoButton;
 class GBoard : public QObject, public QGraphicsRectItem {
 Q_OBJECT;
 
-bool stepsDisabled;
-
 void deselectAllFields();
 
 public:
+
+    bool stepsDisabled;
 
     /**
      * @brief true if the next move is white's, false otherwise
