@@ -10,8 +10,6 @@
 #include "Gui/Window.h"
 
 int main(int argc, char *argv[]) {
-    std::cout << "Cus\n";
-
     GameEngine *engine = new GameEngine();
 
     Window *window = new Window();

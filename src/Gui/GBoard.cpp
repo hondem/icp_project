@@ -103,7 +103,6 @@ void GBoard::showAvailableFields(GField *source) {
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
             if (figure->isMovePossible({x, y})) {
-                std::cout << "Available " << x << ":" << y << "\n";
                 this->fields[y][x]->styleAvailable();
             } else {
                 this->fields[y][x]->styleNotAvailable();
@@ -147,7 +146,6 @@ void GBoard::refresh() {
 }
 
 void GBoard::redoBtnClick() {
-    std::cout << "Redo\n";
     this->stepsDisabled = true;
     this->gameEngine->redo();
     this->refresh();
@@ -158,7 +156,6 @@ void GBoard::redoBtnClick() {
 }
 
 void GBoard::undoBtnClick() {
-    std::cout << "Undo\n";
     this->stepsDisabled = true;
     this->gameEngine->undo();
     this->refresh();
@@ -169,7 +166,6 @@ void GBoard::undoBtnClick() {
 }
 
 void GBoard::playBtnClick() {
-    std::cout << "Play\n";
 
     if (this->gameEngine->getGameSteps().size() == 0) {
         return;
@@ -186,7 +182,6 @@ void GBoard::playBtnClick() {
 }
 
 void GBoard::pauseBtnClick() {
-    std::cout << "Pause\n";
 
     this->timer->stop();
     this->playButton->setDisabled(false);
@@ -194,26 +189,22 @@ void GBoard::pauseBtnClick() {
 }
 
 void GBoard::fileOpenBtnClick() {
-    std::cout << "Open file dialog\n";
 
     fileOpen = new GFileOpen;
     QString filename = QFileDialog::getOpenFileName(fileOpen, "Open file", QDir::currentPath(), "All files (*.*)");
 
     if (false == filename.isNull()) {
-        std::cout << "open: " << filename.toUtf8().constData() << "\n";
         this->gameEngine = new GameEngine(filename.toStdString());
         this->refresh();
     }
 }
 
 void GBoard::fileSaveAsBtnClick() {
-    std::cout << "Save file as...\n";
 
     fileSaveAs = new GFileSaveAs;
     QString filename = QFileDialog::getSaveFileName(fileSaveAs, "Save file as", QDir::currentPath(), "All files (*.*)");
 
     if (false == filename.isNull()) {
-        std::cout << "save as: " << filename.toUtf8().constData() << "\n";
         this->gameEngine->exportGame(filename.toUtf8().constData());
     }
 }
@@ -232,7 +223,6 @@ void GBoard::onStepSelect() {
         return;
     }
 
-    std::cout << "On step select\n";
     //if (this->gameEngine->getCurrentStep() != this->moveList->currentRow()) {
     this->stepsDisabled = true;
     this->gameEngine->setCurrentStep(this->moveList->currentRow() - 1);

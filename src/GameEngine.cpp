@@ -38,7 +38,6 @@ void GameEngine::redo() {
 }
 
 void GameEngine::setStep(int stepIndex) {
-    printf("Step: %d\n", this->currentMove);
     this->gameCheckboard = new Checkboard();
     for(int i = 0; i <= stepIndex; i++){
 
@@ -111,7 +110,6 @@ string GameEngine::translateTypeOfFigure(Figure *figure){
 
 void GameEngine::moveFigure(Figure *figure, Field target) {
     if (false == figure->isMovePossible(target)) {
-        printf("THIS MOVE IS IMPOSSIBLE!\n");
         return;
     }
 

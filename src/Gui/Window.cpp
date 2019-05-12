@@ -85,7 +85,6 @@ void Window::createTab() {
 }
 
 void Window::closeTab(int index) {
-    std::cout << "Close tab " << std::to_string(index) << "\n";
     tabWidget->removeTab(index);
     tabsOpen--;
 
