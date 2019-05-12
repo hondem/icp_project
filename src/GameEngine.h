@@ -12,6 +12,9 @@
 #include <sstream>
 #include <fstream>
 
+/**
+ * @brief Class representing a game
+ */
 class GameEngine {
 private:
     /**
