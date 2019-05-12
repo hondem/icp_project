@@ -62,9 +62,16 @@ void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){
         Figure *movedFigure = this->board->gameEngine->getCheckboard()->getFieldFigure({
             movedFigureField->xPos, movedFigureField->yPos
         });
+
+        MoveRecord *newMove = new MoveRecord();
+        newMove->isWhitePlayersMove = this->board->whiteOnMove;
+        newMove->figure = this->board->gameEngine->translateTypeOfFigure(movedFigure);
+        newMove->source = Coords::toString(Field::convertFieldToCoords(movedFigure->getPosition()));
+        newMove->target = Coords::toString(Field::convertFieldToCoords({xPos, yPos}));
+        
         this->board->gameEngine->moveFigure(movedFigure, {xPos, yPos});
 
-        /*
+
         map<int, MoveRecord*> oldGameSteps = this->board->gameEngine->getGameSteps();
         map<int, MoveRecord*> newGameSteps;
 
@@ -75,15 +82,10 @@ void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){
             index++;
         }
 
-        MoveRecord *newMove = new MoveRecord();
-        newMove->isWhitePlayersMove = this->board->whiteOnMove;
-        newMove->figure = this->board->gameEngine->translateTypeOfFigure(movedFigure);
-        newMove->source = Coords::toString(Field::convertFieldToCoords(movedFigure->getPosition()));
-        newMove->target = Coords::toString(Field::convertFieldToCoords({xPos, yPos}));
-
         newGameSteps[index] = newMove;
         this->board->gameEngine->setGameSteps(newGameSteps);
-*/
+        this->board->gameEngine->setCurrentStep(index);
+
         this->board->stepsDisabled = true;
         this->board->refresh();
         this->board->stepsDisabled = false;
