@@ -10,7 +10,7 @@
 #include "../Checkboard.h"
 
 /**
- * @brief Třída reprezentující střelce
+ * @brief Class representing a bishop
  */
 class Bishop : public Figure {
 public:
