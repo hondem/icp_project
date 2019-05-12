@@ -1,3 +1,7 @@
+/**
+ * @authors Martin Buchta (xbucht28@fit.vutbr.cz) Jan Demel (xdemel01@fit.vutbr.cz)
+ */
+
 #ifndef CPPPROJECT_FIELD_H
 #define CPPPROJECT_FIELD_H
 

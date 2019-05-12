@@ -1,3 +1,7 @@
+/**
+ * @authors Martin Buchta (xbucht28@fit.vutbr.cz) Jan Demel (xdemel01@fit.vutbr.cz)
+ */
+
 #ifndef CHESS_WINDOW_H
 #define CHESS_WINDOW_H
 

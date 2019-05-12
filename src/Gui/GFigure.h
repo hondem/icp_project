@@ -1,3 +1,7 @@
+/**
+ * @authors Martin Buchta (xbucht28@fit.vutbr.cz) Jan Demel (xdemel01@fit.vutbr.cz)
+ */
+
 #ifndef CHESS_GFIGURE_H
 #define CHESS_GFIGURE_H
 

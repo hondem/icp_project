@@ -1,6 +1,6 @@
-//
-// Created by Jan Demel on 08/05/2019.
-//
+/**
+ * @authors Martin Buchta (xbucht28@fit.vutbr.cz) Jan Demel (xdemel01@fit.vutbr.cz)
+ */
 
 #include "GameEngine.h"
 #include <typeinfo>

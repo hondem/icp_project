@@ -1,3 +1,7 @@
+/**
+ * @authors Martin Buchta (xbucht28@fit.vutbr.cz) Jan Demel (xdemel01@fit.vutbr.cz)
+ */
+
 //
 // Created by Jan Demel on 11/05/2019.
 //
