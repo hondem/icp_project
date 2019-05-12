@@ -122,8 +122,36 @@ void GameEngine::moveFigure(Figure *figure, Field target) {
     figure->setPosition(target);
 }
 
+void GameEngine::exportGame(const char *filePath) {
+    stringstream ss;
+
+    int step = 1;
+    int realIndex = 1;
+    for(auto i = this->gameSteps.begin(); i != this->gameSteps.end(); i++){
+        if(step % 2 != 0){
+            ss << realIndex++ << ".";
+        }
+
+        ss << " " << MoveRecord::toString(i->second);
+
+        if(step % 2 == 0){
+            ss << endl;
+        }
+
+        step++;
+    }
+
+    ofstream os (filePath);
+    os << ss.str();
+    os.close();
+}
+
 map<int, MoveRecord*> GameEngine::getGameSteps() {
     return this->gameSteps;
+}
+
+void GameEngine::setGameSteps(map<int, MoveRecord *> newGameSteps) {
+    this->gameSteps = newGameSteps;
 }
 
 int GameEngine::getCurrentStep() {

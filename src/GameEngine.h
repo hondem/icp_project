@@ -9,6 +9,8 @@
 #include "Checkboard.h"
 #include <map>
 #include <string>
+#include <sstream>
+#include <fstream>
 
 class GameEngine {
 private:
@@ -33,12 +35,6 @@ private:
      */
     Figure *findFigure(MoveRecord* currentMove);
 
-    /**
-     * Translates type of figure to internal representation
-     * @param figure
-     * @return String of converted figure
-     */
-    string translateTypeOfFigure(Figure *figure);
 public:
 
     /**
@@ -82,10 +78,22 @@ public:
     void moveFigure(Figure *figure, Field target);
 
     /**
+     * Creates string with whole game in notation
+     * @return
+     */
+    void exportGame(const char *filePath);
+
+    /**
      * @brief Returns game steps parsed from Parser
      * @return map<int, MoveRecord*> gameSteps
      */
     map<int, MoveRecord*> getGameSteps();
+
+    /**
+     * Sets new game steps
+     * @param newGameSteps
+     */
+    void setGameSteps(map<int, MoveRecord*> newGameSteps);
 
     /**
      * @brief Returns current move index
@@ -98,6 +106,13 @@ public:
      * @param currentStep New move index
      */
     void setCurrentStep(int currentStep);
+
+    /*
+     * Translates type of figure to internal representation
+     * @param figure
+     * @return String of converted figure
+     */
+    string translateTypeOfFigure(Figure *figure);
 };
 
 
