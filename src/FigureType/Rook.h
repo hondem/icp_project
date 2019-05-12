@@ -6,7 +6,7 @@
 #include "../Checkboard.h"
 
 /**
- * @brief Třída reprezentující věž
+ * @brief Class representing rook figure
  */
 class Rook : public Figure {
 public:

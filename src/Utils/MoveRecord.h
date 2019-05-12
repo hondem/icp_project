@@ -6,39 +6,42 @@
 
 using namespace std;
 
+/**
+ * @brief Struct representing MoveRecord
+ */
 struct MoveRecord{
     /**
-     * To detect which player's move is it
+     * @brief To detect which player's move is it
      */
     bool isWhitePlayersMove;
 
     /**
-     * Source field
+     * @brief Source field
      */
     string source;
 
     /**
-     * Target field
+     * @brief Target field
      */
     string target;
 
     /**
-     * Type of figure to move
+     * @brief Type of figure to move
      */
     string figure;
 
     /**
-     * Throws the figure on target field out
+     * @brief Throws the figure on target field out
      */
     bool throwAway;
 
     /**
-     * Contains whether it is check or mat
+     * @brief Contains whether it is check or mat
      */
     char flag;
 
     /**
-     * Converts MoveRecord to string
+     * @brief Converts MoveRecord to string
      * @param moveRecord
      * @return
      */

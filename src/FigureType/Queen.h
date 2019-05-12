@@ -6,7 +6,7 @@
 #include "../Checkboard.h"
 
 /**
- * @brief Třída reprezentující dámu
+ * @brief Class representing a queen
  */
 class Queen : public Figure {
 public:

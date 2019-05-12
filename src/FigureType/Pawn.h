@@ -6,7 +6,7 @@
 #include "../Checkboard.h"
 
 /**
- * Třída reprezentující Pěšce
+ * @brief Class representing a pawn
  */
 class Pawn : public Figure {
 public:

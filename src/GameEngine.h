@@ -15,22 +15,22 @@
 class GameEngine {
 private:
     /**
-     * Game steps parsed from Parser
+     * @brief Game steps parsed from Parser
      */
     map<int, MoveRecord*> gameSteps;
 
     /**
-     * An instance of checkboard
+     * @brief An instance of checkboard
      */
     Checkboard *gameCheckboard;
 
     /**
-     * Current move index
+     * @brief Current move index
      */
     int currentMove;
 
     /**
-     * Finds figure that should do this move
+     * @brief Finds figure that should do this move
      * @return Figure / nullptr
      */
     Figure *findFigure(MoveRecord* currentMove);
@@ -38,34 +38,34 @@ private:
 public:
 
     /**
-     * Default GameEngine constructor
+     * @brief Default GameEngine constructor
      */
     GameEngine();
 
     /**
-     * Main constructor of GameEngine with inputFile
+     * @brief Main constructor of GameEngine with inputFile
      * @param inputFile File to read annotation from
      */
     GameEngine(string inputFile);
 
     /**
-     * Go step backwards
+     * @brief Go step backwards
      */
     void undo();
 
     /**
-     * Go step forward
+     * @brief Go step forward
      */
     void redo();
 
     /**
-     * Set step to be shown
+     * @brief Set step to be shown
      * @param stepIndex
      */
     void setStep(int stepIndex);
 
     /**
-     * Getter for game checkboard
+     * @brief Getter for game checkboard
      * @return Instance of game checkboard
      */
     Checkboard *getCheckboard();
@@ -78,7 +78,7 @@ public:
     void moveFigure(Figure *figure, Field target);
 
     /**
-     * Creates string with whole game in notation
+     * @brief Creates string with whole game in notation
      * @return
      */
     void exportGame(const char *filePath);
@@ -90,7 +90,7 @@ public:
     map<int, MoveRecord*> getGameSteps();
 
     /**
-     * Sets new game steps
+     * @brief Sets new game steps
      * @param newGameSteps
      */
     void setGameSteps(map<int, MoveRecord*> newGameSteps);
@@ -107,8 +107,8 @@ public:
      */
     void setCurrentStep(int currentStep);
 
-    /*
-     * Translates type of figure to internal representation
+    /**
+     * @brief Translates type of figure to internal representation
      * @param figure
      * @return String of converted figure
      */
