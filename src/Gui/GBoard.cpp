@@ -124,13 +124,16 @@ void GBoard::refresh() {
     this->moveList->clear();
 
     // write steps into list
+    QString *item = new QString("Start");
+    this->moveList->addItem(*item);
+
     for (const auto &it : this->gameEngine->getGameSteps()) {
         QString *item = new QString(MoveRecord::toString(it.second).data());
         this->moveList->addItem(*item);
     }
 
     // select current step
-    this->moveList->setCurrentRow(this->gameEngine->getCurrentStep());
+    this->moveList->setCurrentRow(this->gameEngine->getCurrentStep() + 1);
 }
 
 void GBoard::redoBtnClick() {
@@ -198,8 +201,8 @@ void GBoard::onStepSelect() {
     std::cout << "On step select\n";
     //if (this->gameEngine->getCurrentStep() != this->moveList->currentRow()) {
     this->stepsDisabled = true;
-    this->gameEngine->setCurrentStep(this->moveList->currentRow());
-    this->gameEngine->setStep(this->moveList->currentRow());
+    this->gameEngine->setCurrentStep(this->moveList->currentRow() - 1);
+    this->gameEngine->setStep(this->moveList->currentRow() - 1);
     this->refresh();
     this->stepsDisabled = false;
     //}
