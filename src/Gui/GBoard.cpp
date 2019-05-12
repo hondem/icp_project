@@ -150,6 +150,7 @@ void GBoard::redoBtnClick() {
     this->stepsDisabled = false;
 
     this->whiteOnMove = (this->gameEngine->getCurrentStep() % 2 == 0) ? false : true;
+    this->deselectAllFields();
 }
 
 void GBoard::undoBtnClick() {
@@ -160,6 +161,7 @@ void GBoard::undoBtnClick() {
     this->stepsDisabled = false;
 
     this->whiteOnMove = (this->gameEngine->getCurrentStep() % 2 == 0) ? false : true;
+    this->deselectAllFields();
 }
 
 void GBoard::playBtnClick() {
@@ -236,5 +238,15 @@ void GBoard::onStepSelect() {
     this->pauseBtnClick();
 
     this->whiteOnMove = (this->gameEngine->getCurrentStep() % 2 == 0) ? false : true;
+    this->deselectAllFields();
     //}
+}
+
+void GBoard::deselectAllFields() {
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            this->fields[y][x]->styleNotSelected();
+            this->fields[y][x]->styleNotAvailable();
+        }
+    }
 }

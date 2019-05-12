@@ -12,6 +12,7 @@ class GField : public QGraphicsRectItem {
 
 public:
     bool available;
+    bool selected;
     void styleSelected();
     void styleNotSelected();
     void styleAvailable();

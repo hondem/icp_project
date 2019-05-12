@@ -9,6 +9,7 @@ GField::GField(QGraphicsItem *parent, int x, int y, GBoard *board) {
     this->board = board;
     this->parent = parent;
     this->available = false;
+    this->selected = false;
     this->xPos = x;
     this->yPos = y;
 
@@ -110,19 +111,31 @@ void GField::mousePressEvent(QGraphicsSceneMouseEvent *event){
 }
 
 void GField::styleSelected() {
+    if (this->selected) {
+        return;
+    }
+
     QPen pen(Qt::darkGreen, 5, Qt::SolidLine, Qt::RoundCap, Qt::BevelJoin);
     this->setPen(pen);
     this->setRect(0, 0, 95, 95);
     this->setX(x()+2);
     this->setY(y()+2);
+
+    this->selected = true;
 }
 
 void GField::styleNotSelected() {
+    if (false == this->selected) {
+        return;
+    }
+
     QPen pen(Qt::NoPen);
     this->setPen(pen);
     this->setRect(0, 0, 100, 100);
     this->setX(x()-2);
     this->setY(y()-2);
+
+    this->selected = false;
 }
 
 void GField::styleAvailable() {

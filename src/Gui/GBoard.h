@@ -28,6 +28,8 @@ Q_OBJECT;
 
 bool stepsDisabled;
 
+void deselectAllFields();
+
 public:
 
     /**
