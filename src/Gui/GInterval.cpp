@@ -6,5 +6,5 @@ GInterval::GInterval() {
     this->setValue(10);
 
     setFixedSize(100, 25);
-    move(835, 480);
+    move(835, 660);
 }

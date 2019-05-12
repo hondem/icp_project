@@ -48,7 +48,7 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
     scene->addWidget(intervalInput);
 
     QLabel *intervalLabel = new QLabel(QString("Interval:"));
-    intervalLabel->move(835, 450);
+    intervalLabel->move(835, 640);
     intervalLabel->setStyleSheet("background-color: rgba(0,0,0,0%)");
     scene->addWidget(intervalLabel);
 
@@ -74,6 +74,8 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
     QString *item = new QString("Start");
     this->moveList->addItem(*item);
     this->moveList->setCurrentRow(0);
+
+    this->pauseButton->setDisabled(true);
 }
 
 void GBoard::renderFigures() {
@@ -159,13 +161,26 @@ void GBoard::undoBtnClick() {
 void GBoard::playBtnClick() {
     std::cout << "Play\n";
 
+    if (this->gameEngine->getGameSteps().size() == 0) {
+        return;
+    }
+
+    // if last step is selected
+    if (this->gameEngine->getCurrentStep() + 1 == this->gameEngine->getGameSteps().size()) {
+        return;
+    }
+
     this->timer->start(this->intervalInput->value() * 100);
+    this->playButton->setDisabled(true);
+    this->pauseButton->setDisabled(false);
 }
 
 void GBoard::pauseBtnClick() {
     std::cout << "Pause\n";
 
     this->timer->stop();
+    this->playButton->setDisabled(false);
+    this->pauseButton->setDisabled(true);
 }
 
 void GBoard::fileOpenBtnClick() {
@@ -195,6 +210,11 @@ void GBoard::fileSaveAsBtnClick() {
 
 void GBoard::onTimer() {
     this->redoBtnClick();
+
+    // if last step is selected
+    if (this->gameEngine->getCurrentStep() + 1 == this->gameEngine->getGameSteps().size()) {
+        this->pauseBtnClick();
+    }
 }
 
 void GBoard::onStepSelect() {
@@ -209,5 +229,6 @@ void GBoard::onStepSelect() {
     this->gameEngine->setStep(this->moveList->currentRow() - 1);
     this->refresh();
     this->stepsDisabled = false;
+    this->pauseBtnClick();
     //}
 }
