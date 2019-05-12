@@ -13,6 +13,7 @@
 
 
 GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
+    this->stepsDisabled = false;
     this->whiteOnMove = true;
     this->selected = nullptr;
     this->scene = scene;
@@ -41,11 +42,12 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
 
     moveList = new GMoveList;
     scene->addWidget(moveList);
+    connect(moveList, SIGNAL(itemSelectionChanged()), this, SLOT(onStepSelect()));
 
     intervalInput = new GInterval;
     scene->addWidget(intervalInput);
 
-    QLabel *intervalLabel = new QLabel(QString("Interval (sekundy):"));
+    QLabel *intervalLabel = new QLabel(QString("Interval:"));
     intervalLabel->move(835, 450);
     intervalLabel->setStyleSheet("background-color: rgba(0,0,0,0%)");
     scene->addWidget(intervalLabel);
@@ -119,14 +121,11 @@ void GBoard::refresh() {
     renderFigures();
 
     // remove steps from list
-    for (auto it : this->moveList->items) {
-        this->moveList->clear();
-    }
+    this->moveList->clear();
 
     // write steps into list
-    for(const auto& it : this->gameEngine->getGameSteps()) {
+    for (const auto &it : this->gameEngine->getGameSteps()) {
         QString *item = new QString(MoveRecord::toString(it.second).data());
-        this->moveList->items.push_back(item);
         this->moveList->addItem(*item);
     }
 
@@ -136,20 +135,24 @@ void GBoard::refresh() {
 
 void GBoard::redoBtnClick() {
     std::cout << "Redo\n";
+    this->stepsDisabled = true;
     this->gameEngine->redo();
     this->refresh();
+    this->stepsDisabled = false;
 }
 
 void GBoard::undoBtnClick() {
     std::cout << "Undo\n";
+    this->stepsDisabled = true;
     this->gameEngine->undo();
     this->refresh();
+    this->stepsDisabled = false;
 }
 
 void GBoard::playBtnClick() {
     std::cout << "Play\n";
 
-    this->timer->start(5000);
+    this->timer->start(this->intervalInput->value() * 100);
 }
 
 void GBoard::pauseBtnClick() {
@@ -184,4 +187,19 @@ void GBoard::fileSaveAsBtnClick() {
 
 void GBoard::onTimer() {
     this->redoBtnClick();
+}
+
+void GBoard::onStepSelect() {
+    if (this->stepsDisabled) {
+        return;
+    }
+
+    std::cout << "On step select\n";
+    //if (this->gameEngine->getCurrentStep() != this->moveList->currentRow()) {
+    this->stepsDisabled = true;
+    this->gameEngine->setCurrentStep(this->moveList->currentRow());
+    this->gameEngine->setStep(this->moveList->currentRow());
+    this->refresh();
+    this->stepsDisabled = false;
+    //}
 }

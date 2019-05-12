@@ -129,3 +129,7 @@ map<int, MoveRecord*> GameEngine::getGameSteps() {
 int GameEngine::getCurrentStep() {
     return this->currentMove;
 }
+
+void GameEngine::setCurrentStep(int currentStep) {
+    this->currentMove = currentStep;
+}

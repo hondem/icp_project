@@ -92,6 +92,12 @@ public:
      * @return int Current move index
      */
     int getCurrentStep();
+
+    /**
+     * @brief Set move index
+     * @param currentStep New move index
+     */
+    void setCurrentStep(int currentStep);
 };
 
 

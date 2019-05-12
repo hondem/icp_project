@@ -26,6 +26,8 @@ class GUndoButton;
 class GBoard : public QObject, public QGraphicsRectItem {
 Q_OBJECT;
 
+bool stepsDisabled;
+
 public:
 
     /**
@@ -79,6 +81,7 @@ public slots:
     void fileOpenBtnClick();
     void fileSaveAsBtnClick();
     void onTimer();
+    void onStepSelect();
 };
 
 
