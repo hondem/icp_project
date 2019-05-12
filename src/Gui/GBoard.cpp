@@ -70,6 +70,10 @@ GBoard::GBoard(QGraphicsScene *scene, GameEngine *gameEngine) {
 
     this->timer = new QTimer(this);
     connect(this->timer, SIGNAL(timeout()), this, SLOT(onTimer()));
+
+    QString *item = new QString("Start");
+    this->moveList->addItem(*item);
+    this->moveList->setCurrentRow(0);
 }
 
 void GBoard::renderFigures() {
