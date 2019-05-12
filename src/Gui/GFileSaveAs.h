@@ -3,6 +3,9 @@
 
 #include <QFileDialog>
 
+/**
+ * @brief Save file as window
+ */
 class GFileSaveAs : public QFileDialog {
 
 };

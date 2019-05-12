@@ -6,9 +6,16 @@
 #include "GField.h"
 #include "../Figure.h"
 
+/**
+ * @brief Figure on the board
+ */
 class GFigure : public QGraphicsPixmapItem {
     GField *field;
 public:
+    /**
+     * @brief Creates new figure and places it on the board
+     * @param figure Figure
+     */
     GFigure(Figure *figure);
 };
 

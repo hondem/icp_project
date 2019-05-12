@@ -5,10 +5,25 @@
 #include <QMouseEvent>
 #include "Window.h"
 
+/**
+ * @brief New tab button
+ */
 class GTabBtn : public QToolButton {
+    /**
+     * @brief Window object
+     */
     Window *window;
 public:
+    /**
+     * @brief Creates new add tab button
+     * @param window Window to append
+     */
     GTabBtn(Window *window);
+
+    /**
+     * @brief Mouse click event hanler
+     * @param event Event
+     */
     void mousePressEvent(QMouseEvent *event);
 };
 

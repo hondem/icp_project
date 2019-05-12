@@ -3,8 +3,14 @@
 
 #include <QPushButton>
 
+/**
+ * @brief Save file as button
+ */
 class GFileSaveAsButton : public QPushButton {
 public:
+    /**
+     * @brief Creates new button for select save location
+     */
     GFileSaveAsButton();
 };
 

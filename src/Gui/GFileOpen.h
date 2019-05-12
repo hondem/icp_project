@@ -3,6 +3,9 @@
 
 #include <QFileDialog>
 
+/**
+ * @brief File open window
+ */
 class GFileOpen : public QFileDialog {
 
 };

@@ -3,8 +3,14 @@
 
 #include <QSpinBox>
 
+/**
+ * @brief Interval for the game auto play
+ */
 class GInterval : public QSpinBox {
 public:
+    /**
+     * @brief Generates new input
+     */
     GInterval();
 };
 

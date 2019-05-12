@@ -3,8 +3,14 @@
 
 #include <QPushButton>
 
+/**
+ * @brief Play button
+ */
 class GPlayButton : public QPushButton {
 public:
+    /**
+     * @brief Creates new play button
+     */
     GPlayButton();
 };
 

@@ -3,8 +3,14 @@
 
 #include <QPushButton>
 
+/**
+ * @brief File open button
+ */
 class GFileOpenButton : public QPushButton {
 public:
+    /**
+     * @brief Creates new button for file select
+     */
     GFileOpenButton();
 };
 
