@@ -13,6 +13,12 @@ The command above will just compile the project for you. You have to run it manu
 make runOSX
 ```
 
+## Generating documentation
+We use doxygen to generate documentation. To generate it, please us the command below.
+```shell
+make doxygen
+```
+
 
 ## Contributors  
 **Jan Demel** - <xdemel01@stud.fit.vutbr.cz>  
