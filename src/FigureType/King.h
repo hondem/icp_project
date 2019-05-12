@@ -6,7 +6,7 @@
 #include "../Checkboard.h"
 
 /**
- * @brief Třída reprezentující krále.
+ * @brief Class representing a king
  */
 class King : public Figure {
 public:
@@ -16,7 +16,7 @@ public:
 
 private:
     /**
-     * Checks whether field is 'dangerous'
+     * @brief Checks whether field is 'dangerous'
      * @param field
      * @return
      */

@@ -13,10 +13,13 @@
 
 using namespace std;
 
+/**
+ * @brief Class representing Parser
+ */
 class Parser{
 public:
     /**
-     * Parse file with chess annotation
+     * @brief Parse file with chess annotation
      * @param filePath Path to file
      * @return Parsed moves
      */
@@ -24,7 +27,7 @@ public:
 
 private:
     /**
-     * Converts move with chess annotation to move record
+     * @brief Converts move with chess annotation to move record
      * @param isWhitePlayer Indicates player
      * @param move Chess anotation
      * @return Parsed move
@@ -32,14 +35,14 @@ private:
     static MoveRecord* ConvertMove(bool isWhitePlayer, string move);
 
     /**
-     * Checks whether given line matches annotation schema
+     * @brief Checks whether given line matches annotation schema
      * @param line Line to check
      * @return
      */
     static bool IsValidChessLine(string line);
 
     /**
-     * Gets first integer from given line
+     * @brief Gets first integer from given line
      * @param line
      * @return
      */

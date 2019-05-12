@@ -57,29 +57,14 @@ map<int, MoveRecord*> Parser::LoadFile(string filePath) {
     return moveRecords;
 }
 
-/**
- * Validates format of input data
- * @param line String to match against
- * @return isValid
- */
 bool Parser::IsValidChessLine(string line){
     return regex_match(line, regex("^[1-9][0-9]*\\.\\s[^.]+\\s[^.]+$"));
 }
 
-/**
- * Extracts line number from given string
- * @param line Line with index as a beginning char
- * @return Parsed index
- */
 int Parser::GetLineIndex(string line){
     return stoi(line.substr(0, line.find(".")));
 }
 
-/**
- * Converts move in string by DFA
- * @param move Move in string
- * @return Parsed move
- */
 MoveRecord* Parser::ConvertMove(bool isWhitePlayer, string move){
     MoveRecord *ret = new MoveRecord();
     ret->isWhitePlayersMove = isWhitePlayer;

@@ -6,68 +6,68 @@
 
 struct Coords;
 /**
- * @brief Struktura pro zaznamenávání souřadnic na hrací ploše.
+ * @brief Struct for fields on checkboard
  */
 struct Field {
     /**
-     * Vodorovná složka
+     * @brief Horizontal
      */
     int x;
 
     /**
-     * Svislá složka
+     * @brief Vertical
      */
     int y;
 
     /**
-     * Overloading operator for comparison
+     * @brief Overloading operator for comparison
      * @param a
      * @return
      */
     bool operator==(const Field& a);
 
     /**
-     * Overloading operator for comparison
+     * @brief Overloading operator for comparison
      * @param a
      * @return
      */
     bool operator!=(const Field& a);
 
     /**
-     * Overloading operator for adding
+     * @brief Overloading operator for adding
      * @param a
      * @return
      */
     Field operator+(const Field& a) const;
 
     /**
-     * Overloading operator for substracting
+     * @brief Overloading operator for substracting
      * @param a
      * @return
      */
     Field operator-(const Field& a) const;
 
     /**
-     * Set X argument
+     * @brief Set X argument
      * @param x
      */
     void setX(int x);
 
     /**
-     * Set Y argument
+     * @brief Set Y argument
      * @param y
      */
     void setY(int y);
 
     /**
-     * Converts coords string to field
+     * @brief Converts coords string to field
      * @param coords
      * @return
      */
     static Field convertCoordsStringToField(std::string coords);
 
     /**
-     * Converts field to coords instance
+     * @brief Converts field to coords instance
      * @param field
      * @return
      */

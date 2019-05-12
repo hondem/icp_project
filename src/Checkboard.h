@@ -11,76 +11,74 @@
 class Figure;
 
 /**
- * @brief Třída reprezentující jednu šachovnici.
+ * @brief Class representing a checkboard
  */
 class Checkboard {
 private:
     /**
-     * @brief 2D pole ukazatelů na figureku.
+     * @brief 2D array of pointers to Figure instance
      */
     Figure *fields[CHECKBOARD_LENGTH][CHECKBOARD_LENGTH];
 
     /**
-     * @brief Přidá střelce na dané políčko
-     * @param position Políčko, kde se vytvoří nová figurka
-     * @param white True, pokud se jedná o bílou figurku, False pro černou.
+     * @brief Adds bishop to certain field on board
+     * @param position Field
+     * @param white True if figure is white, else False
      */
     void addBishop(Field position, bool white);
 
     /**
-     * @brief Přidá krále na dané políčko
-     * @param position Políčko
-     * @param white True, pokud se jedná o bílou figurku, False pro černou.
+     * @brief Adds king to certain field on board
+     * @param position Field
+     * @param white True if figure is white, else False
      */
     void addKing(Field position, bool white);
 
     /**
-     * @brief Přidá jezdce na dané políčko
-     * @param position Políčko
-     * @param white True, pokud se jedná o bílou figurku, False pro černou.
+     * @brief Adds knight to certain field on board
+     * @param position Field
+     * @param white True if figure is white, else False
      */
     void addKnight(Field position, bool white);
 
     /**
-     * @brief Přidá pěšce na dané políčko
-     * @param position Políčko
-     * @param white True, pokud se jedná o bílou figurku, False pro černou.
+     * @brief Adds pawn to certain field on board
+     * @param position Field
+     * @param white True if figure is white, else False
      */
     void addPawn(Field position, bool white);
 
     /**
-     * @brief Přidá dámu na dané políčko
-     * @param position Políčko
-     * @param white True, pokud se jedná o bílou figurku, False pro černou.
+     * @brief Adds queen to certain field on board
+     * @param position Field
+     * @param white True if figure is white, else False
      */
     void addQueen(Field position, bool white);
 
     /**
-     * @brief Přidá věž na dané políčko
-     * @param position Políčko
-     * @param white True, pokud se jedná o bílou figurku, False pro černou.
+     * @brief Adds rook to certain field on board
+     * @param position Field
+     * @param white True if figure is white, else False
      */
     void addRook(Field position, bool white);
 public:
     /**
-     * @brief Kontruktor šachovnice.
-     * Vytvoří novou šachovnici se všemi figurkami na svých místech.
+     * @brief Constructor of checkboard
+     * Creates new checkboard with all figures on its position
      */
     Checkboard();
 
     /**
-     * @brief Vrací ukazatel na Figure, která je na pozici position, nebo nullptr.
-     *
-     * @param position Pozice na šachovnici
-     * @return Figure * ukazatel na figurku
+     * @brief Return pointer to Figure which is on position, or nullptr
+     * @param position Field on checkboard
+     * @return Figure * Pointer to Figure
      */
     Figure *getFieldFigure(Field position);
 
     /**
-     * @brief Umístí figurku na danou pozici na šachovnici.
-     *
-     * @param position Pozice na šachovnici
-     * @param figure Ukazatel na figurku
+     * @brief Places figure on certain field on checkboard
+     * @param position Field on checkboard
+     * @param figure Pointer to figure
      */
     void setFieldFigure(Field position, Figure *figure);
 };

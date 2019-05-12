@@ -10,33 +10,36 @@
 
 struct Field;
 
+/**
+ * @brief Struct for coordinations
+ */
 struct Coords {
     /**
-     * Horizontal
+     * @brief Horizontal
      */
     char x;
 
     /**
-     * Vertical
+     * @brief Vertical
      */
     int y;
 
     /**
-     * Converts coords string to coords
+     * @brief Converts coords string to coords
      * @param coords
      * @return
      */
     static Coords convertCoordsStringToCoords(std::string coords);
 
     /**
-     * Converts coords to field
+     * @brief Converts coords to field
      * @param coords
      * @return
      */
     static Field convertCoordsToField(Coords coords);
 
     /**
-     * Converts coords to string
+     * @brief Converts coords to string
      * @param coords
      * @return
      */
