@@ -21,5 +21,5 @@ make doxygen
 
 
 ## Contributors  
-**Jan Demel** - <xdemel01@stud.fit.vutbr.cz>  
-**Martin Buchta** - <xbucht28@stud.fit.vutbr.cz>
+**[https://github.com/hondem/](Jan Demel)** - <xdemel01@stud.fit.vutbr.cz>  
+**[https://github.com/martinbuchta](Martin Buchta)** - <xbucht28@stud.fit.vutbr.cz>
